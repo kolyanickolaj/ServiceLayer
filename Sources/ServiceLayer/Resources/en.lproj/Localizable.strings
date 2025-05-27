@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  ServiceLayer
+
+  Created by Andrey Polyashev on 2/29/24.
+  
+*/
+
+"defaultErrorTitle" = "Error";
+"ok" = "Ok";
+"cantDecodeResponse" = "Can't decode response";
+"somethingWentWrongError" = "Something went wrong";
+"authRequired" = "Authorization required";
+"cantFindHost" = "Can't find host";
+"resourceUnavailable" = "Resource Unavailable";
+"internetConnectionLost" = "Internet Connection Lost";
