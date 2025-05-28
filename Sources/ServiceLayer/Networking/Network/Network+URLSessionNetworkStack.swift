@@ -213,7 +213,7 @@ extension Network {
                         completion: completion
                     )
 
-                case (let statusCode, let apiCode, let remoteData):
+                case (let statusCode, _, _):
                     self.handleFailedFetch(
                         taskIdentifier: taskIdentifier,
                         request: request,

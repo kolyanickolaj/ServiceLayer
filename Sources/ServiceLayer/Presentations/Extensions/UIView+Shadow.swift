@@ -8,11 +8,10 @@
 import UIKit
 
 extension UIView {
-    #warning("func dropShadow() - Put to extension for App")
-//    func dropShadow() {
-//        layer.shadowColor = Colors.shadowGray.color.cgColor
-//        layer.shadowOpacity = 0.03
-//        layer.shadowRadius = 5
-//        layer.shadowOffset = .init(width: 0, height: 2)
-//    }
+    func dropShadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.03
+        layer.shadowRadius = 5
+        layer.shadowOffset = .init(width: 0, height: 2)
+    }
 }

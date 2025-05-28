@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import ServiceLayer
 
 private extension String {
     static let cachedProfileKey = "cachedProfileKey"

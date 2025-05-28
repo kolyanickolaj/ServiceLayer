@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ServiceLayer
 
 struct Account: Codable, JSONParsable {
     let id: Int

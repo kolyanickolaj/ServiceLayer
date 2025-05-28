@@ -27,6 +27,6 @@ public final class JSONToDataConverter {
         guard let json = try? JSON(data: data) else {
             return nil
         }
-        return try? T.from(json)
+        return T.from(json)
     }
 }

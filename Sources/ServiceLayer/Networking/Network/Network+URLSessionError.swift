@@ -26,7 +26,7 @@ extension Network.URLSessionError: LocalizedError {
         switch self {
         case .noRequest(let error):
             return error.localizedDescription
-        case .server(_, let aPIError, _):
+        case .server(_, _, _):
             return nil
         case .noData(_, _):
             return nil
@@ -53,9 +53,8 @@ extension Network.URLSessionError {
             return self
         case .url(let nserror):
             return nserror
-        case .server(_, let error, _):
+        case .server(_, _, _):
             return nil
-
         case .retry(_, let state):
             return state.errors.last as? Network.URLSessionError ?? self
         }

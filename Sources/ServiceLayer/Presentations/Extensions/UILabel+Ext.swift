@@ -44,7 +44,7 @@ extension UILabel {
             nsAttributedString = NSMutableAttributedString(string: text)
         }
         
-        var attributes: [NSAttributedString.Key: Any] = [.foregroundColor: textColor]
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: textColor]
         nsAttributedString.addAttributes(
             attributes,
             range: NSRange(

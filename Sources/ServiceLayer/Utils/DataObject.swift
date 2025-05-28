@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreData
-import ServiceLayer
 
 struct DataObject: TIdentifiable {
     let identifier: String

@@ -6,7 +6,6 @@
 //
 
 import SwiftyJSON
-import ServiceLayer
 
 typealias PaymentSession = PaymentSessionRequest.Model
 
