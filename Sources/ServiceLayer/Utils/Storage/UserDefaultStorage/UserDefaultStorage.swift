@@ -14,6 +14,7 @@ public protocol IUserDefaultStorage {
 }
 
 public final class UserDefaultStorage: IUserDefaultStorage {
+    public init() {}
     
     private let userDefaults = UserDefaults.standard
     

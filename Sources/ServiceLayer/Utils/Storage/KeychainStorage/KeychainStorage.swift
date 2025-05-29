@@ -20,6 +20,7 @@ public protocol IKeychainStorage {
 }
 
 public final class KeychainStorage: IKeychainStorage {
+    public init() {}
     // MARK: - Properties
 
     private static let access_token_key = "auth_token"

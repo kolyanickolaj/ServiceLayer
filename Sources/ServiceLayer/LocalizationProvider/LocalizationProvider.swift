@@ -12,6 +12,8 @@ public protocol ILocalizationProvider {
 }
 
 public final class LocalizationProvider: ILocalizationProvider {
+    public init() {}
+    
     public func getPreferredLanguage() -> Language {
         guard let preferredLanguage = Bundle.main.preferredLocalizations.first else {
             return .en
