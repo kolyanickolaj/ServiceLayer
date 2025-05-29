@@ -12,7 +12,7 @@ public final class DefaultErrorExtractor: ErrorExtracting {
   
     private let decoder: JSONDecoder
     
-    init(decoder: JSONDecoder = .init()) {
+    public init(decoder: JSONDecoder = .init()) {
         self.decoder = decoder
     }
     
