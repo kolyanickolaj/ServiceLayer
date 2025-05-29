@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GameSessionRequest: BaseRequest {
+public final class GameSessionRequest: BaseRequest {
     
     struct Body: Codable {
         struct Data: Codable {
@@ -22,23 +22,23 @@ final class GameSessionRequest: BaseRequest {
     
     // MARK: - Properties
     
-    var zone: RequestZone {
+    public var zone: RequestZone {
         .private
     }
     
-    var method: HTTP.Method {
+    public var method: HTTP.Method {
         .POST
     }
     
-    var apiVersion: ApiVersion {
+    public var apiVersion: ApiVersion {
         .api
     }
     
-    var path: String? {
+    public var path: String? {
         "casino/create-game-session"
     }
     
-    func makeBody() throws -> Data? {
+    public func makeBody() throws -> Data? {
         let body = Body(data: .init(user_identifier: "null", game_identifier: gameIdentifier, mobile: true, strategy: "redirect"))
         let encoder = JSONEncoder()
         return try encoder.encode(body)

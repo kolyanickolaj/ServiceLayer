@@ -8,7 +8,6 @@
 import Foundation
 
 public class URLErrorMethodProposer: MethodProposing {
-    
     public func proposeMethod(toHandle error: Error) -> Proposition? {
         switch error {
         case let error as NSError where error.domain == NSURLErrorDomain:

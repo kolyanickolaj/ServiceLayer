@@ -8,18 +8,18 @@
 import Foundation
 import Combine
 
-final class AuthorizationProvider: IAuthorizationProvider {
+public final class AuthorizationProvider: IAuthorizationProvider {
     
     // Public
-    var isAuthorized: Bool {
+    public var isAuthorized: Bool {
         storage.accessToken != nil
     }
     
-    var accessToken: String? {
+    public var accessToken: String? {
         storage.accessToken
     }
     
-    var authorizationPublisher: any Publisher<Bool, Never> {
+    public var authorizationPublisher: any Publisher<Bool, Never> {
         authorizationSubject
             .eraseToAnyPublisher()
             .receive(on: DispatchQueue.main)
@@ -31,19 +31,19 @@ final class AuthorizationProvider: IAuthorizationProvider {
     
     // MARK: - Inits
     
-    init(storage: AccessTokenStorage) {
+    public init(storage: AccessTokenStorage) {
         self.storage = storage
         storage.accessToken = nil
     }
     
     // MARK: - IAuthorizationProvider
     
-    func saveToken(_ token: String) {
+    public func saveToken(_ token: String) {
         storage.accessToken = token
         authorizationSubject.send(true)
     }
     
-    func logout() {
+    public func logout() {
         storage.accessToken = nil
         authorizationSubject.send(false)
     }

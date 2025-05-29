@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Profile: Codable, JSONParsable {
+public struct Profile: Codable, JSONParsable {
     
     let id: Int
     let email: String

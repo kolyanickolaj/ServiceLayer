@@ -8,7 +8,6 @@
 import Foundation
 
 public final class ErrorModifier: ErrorModifying {
-    
     private let decoder: JSONDecoder
     
     public init(decoder: JSONDecoder = .init()) {

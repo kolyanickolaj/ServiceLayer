@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Language: String, CaseIterable {
+public enum Language: String, CaseIterable {
     case en
     
     var title: String {

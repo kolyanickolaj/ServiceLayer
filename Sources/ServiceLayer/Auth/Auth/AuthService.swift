@@ -23,7 +23,10 @@ public final class AuthService: IAuthService {
 
     // MARK: - Inits
 
-    init(requester: Requester, storage: IStorage) {
+    public init(
+        requester: Requester,
+        storage: IStorage
+    ) {
         self.requester = requester
         self.storage = storage
     }

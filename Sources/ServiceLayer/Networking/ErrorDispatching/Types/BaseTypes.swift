@@ -24,7 +24,6 @@ public enum ErrorHandlingMethod {
 }
 
 public protocol MethodProposing {
-
     func proposeMethod(toHandle error: Error) -> Proposition?
 }
 
@@ -34,13 +33,6 @@ public protocol ErrorExtracting {
         error: Error?
     ) -> Error?
 }
-
-//public extension ErrorExtracting {
-//    
-//    func extract(request: RequestResource, error: Error?) -> Error? {
-//        return extract(request: request, error: error)
-//    }
-//}
 
 public protocol ErrorModifying {
     func modify(error: Error) -> Error?

@@ -13,22 +13,20 @@ private enum KeychainErrors: Error {
     case unknown(status: OSStatus)
 }
 
-protocol IKeychainStorage {
-
+public protocol IKeychainStorage {
     func saveAccessToken(_ token: String) throws
     func getAccessToken() throws -> String?
     func deleteAccessToken() throws
 }
 
-final class KeychainStorage: IKeychainStorage {
-
+public final class KeychainStorage: IKeychainStorage {
     // MARK: - Properties
 
     private static let access_token_key = "auth_token"
 
     // MARK: - IKeychainStorageService
 
-    func saveAccessToken(_ token: String) throws {
+    public func saveAccessToken(_ token: String) throws {
         guard let data = token.data(using: .utf8) else { return }
 
         let query = [
@@ -49,7 +47,7 @@ final class KeychainStorage: IKeychainStorage {
         }
     }
 
-    func getAccessToken() throws -> String? {
+    public func getAccessToken() throws -> String? {
         let query = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: KeychainStorage.access_token_key,
@@ -68,7 +66,7 @@ final class KeychainStorage: IKeychainStorage {
         return String(decoding: data, as: UTF8.self)
     }
 
-    func deleteAccessToken() throws {
+    public func deleteAccessToken() throws {
         let query = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: KeychainStorage.access_token_key as Any

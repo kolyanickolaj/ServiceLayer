@@ -7,14 +7,13 @@
 
 import Foundation
 
-protocol AccessTokenStorage: AnyObject {
+public protocol AccessTokenStorage: AnyObject {
     typealias JWT = String
     var accessToken: JWT? { get set }
 }
 
 extension KeychainStorage: AccessTokenStorage {
-    
-    var accessToken: JWT? {
+    public var accessToken: JWT? {
         get {
             try? getAccessToken()
         }

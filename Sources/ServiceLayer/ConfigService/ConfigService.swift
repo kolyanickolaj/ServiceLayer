@@ -12,35 +12,35 @@ private extension String {
     static let translationsKey = "translationsKey"
 }
 
-protocol IConfigService: AnyObject {
-
+public protocol IConfigService: AnyObject {
     func getConfig() -> AnyPublisher<[String], Error>
-
     func getTranslation(locale: String?) -> AnyPublisher<Translations, Error>
     func cachedTranslations() -> (isValid: Bool, Translations)
 }
 
-final class ConfigService: IConfigService {
-
+public final class ConfigService: IConfigService {
     // Dependecies
     private let requester: Requester
     private let storage: IStorage
 
     // MARK: - Inits
 
-    init(requester: Requester, storage: IStorage) {
+    public init(
+        requester: Requester,
+        storage: IStorage
+    ) {
         self.requester = requester
         self.storage = storage
     }
 
     // MARK: - IDataInfoService
 
-    func getConfig() -> AnyPublisher<[String], Error> {
+    public func getConfig() -> AnyPublisher<[String], Error> {
         let request = ConfigRequest()
         return requester.fetchList(request: request)
     }
 
-    func getTranslation(locale: String?) -> AnyPublisher<Translations, Error> {
+    public func getTranslation(locale: String?) -> AnyPublisher<Translations, Error> {
         let request = TranslationRequest(locale: locale)
         return requester.fetch(request: request)
             .handleEvents(receiveOutput: { [weak self] translations in
@@ -54,7 +54,7 @@ final class ConfigService: IConfigService {
             .eraseToAnyPublisher()
     }
     
-    func cachedTranslations() -> (isValid: Bool, Translations) {
+    public func cachedTranslations() -> (isValid: Bool, Translations) {
         guard let dataObject = storage.fetch(DataObject.self, identifier: .translationsKey),
               let cached: Translations = JSONToDataConverter.convert(data: dataObject.data) else {
             return (false, defaultTranslations())
@@ -63,6 +63,6 @@ final class ConfigService: IConfigService {
     }
     
     func defaultTranslations() -> Translations {
-        return .init()
+        .init()
     }
 }

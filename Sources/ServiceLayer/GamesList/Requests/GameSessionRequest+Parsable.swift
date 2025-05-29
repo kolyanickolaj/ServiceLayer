@@ -10,9 +10,9 @@ import Foundation
 
 extension GameSessionRequest: ModelRequest {
     
-    typealias Model = GameSessionResponse
+    public typealias Model = GameSessionResponse
         
-    var payloadKey: String? {
+    public var payloadKey: String? {
         "data"
     }
 }

@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct MDGame: Codable, Hashable, Equatable, Identifiable {
-    let id: Int
-    let title, identifier, identifier2: String
-    let producerID: Int
-    let producer: Producer
-    let isMobile: Int
-    let images: [String: MDGame.Image]?
+public struct MDGame: Codable, Hashable, Equatable, Identifiable {
+    public let id: Int
+    public let title, identifier, identifier2: String
+    public let producerID: Int
+    public let producer: Producer
+    public let isMobile: Int
+    public let images: [String: MDGame.Image]?
 //    let casinoCategories: [CasinoCategory]
-    let categories: [String]
-    let category: String
+    public let categories: [String]
+    public let category: String
     enum CodingKeys: String, CodingKey {
         case id, title, identifier, identifier2
         case producerID = "producer_id"
@@ -28,32 +28,32 @@ struct MDGame: Codable, Hashable, Equatable, Identifiable {
     
     // MARK: - Hashable
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
 
     // MARK: - Equatable
     
-    static func == (lhs: MDGame, rhs: MDGame) -> Bool {
+    public static func == (lhs: MDGame, rhs: MDGame) -> Bool {
         return lhs.id == rhs.id
     }
 }
 
 extension MDGame {
         
-    struct Image: Codable {
+    public struct Image: Codable {
         let jpeg: URL?
         let webp: URL?
         let png: URL?
     }
     
-    enum PurpleCategory: String, Codable {
+    public enum PurpleCategory: String, Codable {
         case crash
         case slots
         case lottery
         case unknowed
         
-        init(rawValue: String) {
+        public init(rawValue: String) {
             switch rawValue {
             case "crash":
                 self = .crash

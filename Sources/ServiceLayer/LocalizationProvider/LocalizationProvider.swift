@@ -7,14 +7,12 @@
 
 import Foundation
 
-protocol ILocalizationProvider {
-    
+public protocol ILocalizationProvider {
     func getPreferredLanguage() -> Language
 }
 
-final class LocalizationProvider: ILocalizationProvider {
-    
-    func getPreferredLanguage() -> Language {
+public final class LocalizationProvider: ILocalizationProvider {
+    public func getPreferredLanguage() -> Language {
         guard let preferredLanguage = Bundle.main.preferredLocalizations.first else {
             return .en
         }

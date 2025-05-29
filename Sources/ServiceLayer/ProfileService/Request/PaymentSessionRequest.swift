@@ -7,35 +7,35 @@
 
 import Foundation
 
-final class PaymentSessionRequest: BaseRequest, ModelRequest {
+public final class PaymentSessionRequest: BaseRequest, ModelRequest {
     
-    var zone: RequestZone {
+    public var zone: RequestZone {
         .private
     }
     
-    var baseURL: URL {
+    public var baseURL: URL {
         ServiceLayer.constants.platformHost
     }
     
-    var method: HTTP.Method {
+    public var method: HTTP.Method {
         .POST
     }
 
-    var path: String? {
+    public var path: String? {
         "user/pay-session"
     }
     
-    var apiVersion: ApiVersion {
+    public var apiVersion: ApiVersion {
         .api
     }
     
-    var queryItems: [URLQueryItem]? {
+    public var queryItems: [URLQueryItem]? {
         var queries: [URLQueryItem] = []
         queries.append(.init(name: "method", value: methodQueryParam))
         return queries
     }
     
-    var payloadKey: String? {
+    public var payloadKey: String? {
         "data"
     }
     

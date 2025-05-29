@@ -13,16 +13,14 @@ private extension String {
     static let paymentSessionDepositMethod = "deposit"
 }
 
-protocol IProfileService: AnyObject {
-
+public protocol IProfileService: AnyObject {
     func paymentSession() -> AnyPublisher<PaymentSessionRequest.Model, Error>
     func getProfile() -> AnyPublisher<Profile, Error>
     func cachedProfile() -> (isValid: Bool, Profile?)
     func subscribe() -> ObservingPublisher<Profile?>
 }
 
-final class ProfileService: IProfileService {
-
+public final class ProfileService: IProfileService {
     private let profilePublisher = ObservingSubject<Profile?>()
 
     // Dependecies
@@ -32,7 +30,7 @@ final class ProfileService: IProfileService {
 
     // MARK: - Inits
 
-    init(requester: Requester, authProvider: IAuthorizationProvider, storage: IStorage) {
+    public init(requester: Requester, authProvider: IAuthorizationProvider, storage: IStorage) {
         self.requester = requester
         self.authProvider = authProvider
         self.storage = storage
@@ -40,16 +38,16 @@ final class ProfileService: IProfileService {
 
     // MARK: - IProfileService
     
-    func subscribe() -> ObservingPublisher<Profile?> {
-        return profilePublisher.eraseToAnyPublisher()
+    public func subscribe() -> ObservingPublisher<Profile?> {
+        profilePublisher.eraseToAnyPublisher()
     }
     
-    func paymentSession() -> AnyPublisher<PaymentSessionRequest.Model, Error> {
+    public func paymentSession() -> AnyPublisher<PaymentSession, Error> {
         let request = PaymentSessionRequest(method: .paymentSessionDepositMethod)
         return requester.fetch(request: request)
     }
     
-    func getProfile() -> AnyPublisher<Profile, Error> {
+    public func getProfile() -> AnyPublisher<Profile, Error> {
         let request = ProfileRequest()
         return requester.fetch(request: request)
             .handleEvents(receiveOutput: { [weak self] profile in
@@ -64,7 +62,7 @@ final class ProfileService: IProfileService {
             .eraseToAnyPublisher()
     }
     
-    func cachedProfile() -> (isValid: Bool, Profile?) {
+    public func cachedProfile() -> (isValid: Bool, Profile?) {
         guard authProvider.isAuthorized else {
             return (false, nil)
         }

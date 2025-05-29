@@ -47,7 +47,6 @@ extension LoginError: LocalizedError {
 // MARK: - Nasted / ErrorCode
 
 extension LoginError {
-
     enum ErrorCode: Int {
         case secondFactorAuth  = 34
         case invalidCreds      = 23
@@ -56,4 +55,10 @@ extension LoginError {
         case disabled          = 1
         case unowned
     }
+}
+
+enum LoginErrors: CustomHandlingMethod {
+    case secondFactorAuth(error: String)
+    case invalidCreds(remote: String, local: String)
+    case `default`(remote: String)
 }

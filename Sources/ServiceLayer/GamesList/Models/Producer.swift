@@ -8,14 +8,14 @@
 import Foundation
 import SwiftyJSON
 
- struct Producer: Codable, JSONParsable {
-     let id: Int
-     let name: String
-     let text: String?
-     let title: String?
-     let logoUrl: URL?
+public struct Producer: Codable, JSONParsable {
+    public let id: Int
+    public let name: String
+    public let text: String?
+    public let title: String?
+    public let logoUrl: URL?
           
-     static func from(_ json: JSON) -> Producer? {
+    public static func from(_ json: JSON) -> Producer? {
          guard
             let id = json["id"].int,
             let name = json["name"].string

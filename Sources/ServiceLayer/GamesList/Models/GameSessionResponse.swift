@@ -8,12 +8,12 @@
 import SwiftyJSON
 import Foundation
 
-struct GameSessionResponse: Codable, JSONParsable {
+public struct GameSessionResponse: Codable, JSONParsable {
     
      let launchOptions: GameLaunchOptions
      let gameLaunchUrl: String?
 
-    static func from(_ json: JSON) -> GameSessionResponse? {
+    public static func from(_ json: JSON) -> GameSessionResponse? {
         let launchOptionsJson = json["launch_options"]
         let gameLaunchUrl = json["gameLaunchUrl"].string
         guard let launchOptions = GameLaunchOptions.from(launchOptionsJson) else {

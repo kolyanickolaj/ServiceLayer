@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-struct Translations: JSONParsable {
+public struct Translations: JSONParsable {
     
     let dict: JSON
     let flat: [String: String]
@@ -36,7 +36,7 @@ struct Translations: JSONParsable {
         }
     }
     
-    static func from(_ json: JSON) -> Translations? {
+    public static func from(_ json: JSON) -> Translations? {
         return .init(dict: json)
     }
     

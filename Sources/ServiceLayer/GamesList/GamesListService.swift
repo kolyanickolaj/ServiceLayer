@@ -16,7 +16,7 @@ private extension String {
     static let producersCachedKey: String = "producersCachedKey"
 }
 
-protocol IGamesService {
+public protocol IGamesService {
     func games(producerId: Int?) -> AnyPublisher<[MDGame], Error>
     func games(searchText: String?) -> AnyPublisher<[MDGame], Error>
     func games(categoryId: Int?, devId: String?) -> AnyPublisher<[MDGame], Error>
@@ -27,8 +27,7 @@ protocol IGamesService {
     func cachedCategories() -> (isValid: Bool, [CasinoCategory])
 }
 
-final class GamesService: IGamesService {
-    
+public final class GamesService: IGamesService {
     struct CategoryName: Codable {
         let id: Int
         let name: String
@@ -47,8 +46,10 @@ final class GamesService: IGamesService {
 
     // MARK: - Inits
 
-    init(requester: Requester,
-         storage: IStorage) {
+    public init(
+        requester: Requester,
+        storage: IStorage
+    ) {
         self.requester = requester
         self.storage = storage
     }
@@ -73,19 +74,19 @@ final class GamesService: IGamesService {
             .eraseToAnyPublisher()
     }
     
-    func games(categoryId: Int?, devId: String?) -> AnyPublisher<[MDGame], Error> {
-        return mainGames(categoryId: categoryId, devId: devId)
+    public func games(categoryId: Int?, devId: String?) -> AnyPublisher<[MDGame], Error> {
+        mainGames(categoryId: categoryId, devId: devId)
     }
     
-    func games(searchText: String?) -> AnyPublisher<[MDGame], Error> {
-        return mainGames(searchText: searchText)
+    public func games(searchText: String?) -> AnyPublisher<[MDGame], Error> {
+        mainGames(searchText: searchText)
     }
 
-    func games(producerId: Int?) -> AnyPublisher<[MDGame], Error> {
-        return mainGames(producerId: producerId)
+    public func games(producerId: Int?) -> AnyPublisher<[MDGame], Error> {
+        mainGames(producerId: producerId)
     }
     
-    func producers() -> AnyPublisher<[Producer], Error> {
+    public func producers() -> AnyPublisher<[Producer], Error> {
         let request = GameProducerRequest()
         return requester.fetchList(request: request)
             .handleEvents(receiveOutput: { [weak self] response in
@@ -99,7 +100,7 @@ final class GamesService: IGamesService {
             .eraseToAnyPublisher()
     }
     
-    func cachedProducers() -> (isValid: Bool, [Producer]) {
+    public func cachedProducers() -> (isValid: Bool, [Producer]) {
         guard let dataObject = storage.fetch(DataObject.self, identifier: .producersCachedKey),
               let cached: [Producer] = JSONToDataConverter.convert(data: dataObject.data) else {
             return (false, [])
@@ -109,7 +110,7 @@ final class GamesService: IGamesService {
         return (isValid, cached)
     }
     
-    func categories() -> AnyPublisher<[CasinoCategory], Error> {
+    public func categories() -> AnyPublisher<[CasinoCategory], Error> {
         let request = CategoryRequest()
         return requester.fetchList(request: request)
             .handleEvents(receiveOutput: { [weak self] response in
@@ -123,7 +124,7 @@ final class GamesService: IGamesService {
             .eraseToAnyPublisher()
     }
     
-    func cachedCategories() -> (isValid: Bool, [CasinoCategory]) {
+    public func cachedCategories() -> (isValid: Bool, [CasinoCategory]) {
         guard let dataObject = storage.fetch(DataObject.self, identifier: .categoriesCachedKey),
               let cached: [CasinoCategory] = JSONToDataConverter.convert(data: dataObject.data) else {
             return (false, [])
@@ -133,14 +134,13 @@ final class GamesService: IGamesService {
         return (isValid, cached)
     }
 
-    func gameSession(gameIdentifier: String) -> AnyPublisher<GameSessionRequest.Model, Error> {
+    public func gameSession(gameIdentifier: String) -> AnyPublisher<GameSessionRequest.Model, Error> {
         let request = GameSessionRequest(gameIdentifier: gameIdentifier)
         return requester.fetch(request: request)
     }
 }
 
 extension GamesService {
-    
     static let availableGamesId: [String] = [
         "vs50aladdin",
         "vs25kingdomsnojp",

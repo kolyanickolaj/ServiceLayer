@@ -7,11 +7,10 @@
 
 import Foundation
 
-final class BasicAuthTokenProvider: IBasicAuthTokenProvider {
+public final class BasicAuthTokenProvider: IBasicAuthTokenProvider {
+    public let token: String
     
-    let token: String
-    
-    init(token: String) {
+    public init(token: String) {
         self.token = token
     }
 }
