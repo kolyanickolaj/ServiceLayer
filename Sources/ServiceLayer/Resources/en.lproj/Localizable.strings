@@ -14,3 +14,5 @@
 "cantFindHost" = "Can't find host";
 "resourceUnavailable" = "Resource Unavailable";
 "internetConnectionLost" = "Internet Connection Lost";
+"tooManyRequests" = "Too many requests. Try again later";
+"serviceUnavailable" = "503 Service Temporarily Unavailable";

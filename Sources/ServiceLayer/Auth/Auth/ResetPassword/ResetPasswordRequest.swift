@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ResetPasswordRequest: BaseRequest {
+public final class ResetPasswordRequest: BaseRequest {
     struct Query: Codable {
         let type: Int
         let email: String
@@ -15,19 +15,19 @@ final class ResetPasswordRequest: BaseRequest {
 
     private let queries: Query
 
-    var method: HTTP.Method {
+    public var method: HTTP.Method {
         .POST
     }
 
-    var path: String? {
+    public var path: String? {
         "user/password/reset"
     }
     
-    var apiVersion: ApiVersion {
+    public var apiVersion: ApiVersion {
         .v2
     }
     
-    func makeBody() throws -> Data? {
+    public func makeBody() throws -> Data? {
         let encoder = JSONEncoder()
         return try encoder.encode(queries)
     }

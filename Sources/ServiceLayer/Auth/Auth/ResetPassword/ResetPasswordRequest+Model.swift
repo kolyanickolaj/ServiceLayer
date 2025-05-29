@@ -7,13 +7,15 @@
 
 import Foundation
 
+public typealias ResetPasswordResponseModel = ResetPasswordRequest.Model
+
 extension ResetPasswordRequest: ModelRequest {
     
-    struct Model: Codable, JSONParsable {
+    public struct Model: Codable, JSONParsable {
         let messages: String
     }
     
-    var payloadKey: String? {
+    public var payloadKey: String? {
         "data"
     }
 }

@@ -16,6 +16,8 @@ enum Localization: String {
     case cantFindHost
     case resourceUnavailable
     case internetConnectionLost
+    case tooManyRequests
+    case serviceUnavailable
     
     var localized: String {
         NSLocalizedString(self.rawValue, comment: "")

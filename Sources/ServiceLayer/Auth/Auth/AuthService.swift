@@ -8,18 +8,14 @@
 import Foundation
 import Combine
 
-protocol IAuthService: AnyObject {
-
+public protocol IAuthService: AnyObject {
     func signIn(login: String, pass: String, secondFactorCode: String?) -> AnyPublisher<AuthResponse, Error>
-
     func signUp(params: SignUpRequest.Params) -> AnyPublisher<SignUpResponseModel, Error>
-    
-    func resetPassword(email: String) -> AnyPublisher<ResetPasswordRequest.Model, Error>
-    
-    func validate(params: SignUpValidationRequest.PhoneQuery) -> AnyPublisher<SignUpValidationRequest.Model, Error>
+    func resetPassword(email: String) -> AnyPublisher<ResetPasswordResponseModel, Error>
+    func validate(params: SignUpValidationRequest.PhoneQuery) -> AnyPublisher<SignUpValidationResponseModel, Error>
 }
 
-final class AuthService: IAuthService {
+public final class AuthService: IAuthService {
 
     // Dependecies
     private let requester: Requester
@@ -32,25 +28,25 @@ final class AuthService: IAuthService {
         self.storage = storage
     }
 
-    func signIn(login: String, pass: String, secondFactorCode: String?) -> AnyPublisher<AuthResponse, Error> {
+    public func signIn(login: String, pass: String, secondFactorCode: String?) -> AnyPublisher<AuthResponse, Error> {
         let request = SignInRequest(queries: .init(email: login, password: pass, confirmationCode: secondFactorCode))
         return requester.fetch(request: request)
     }
 
-    func signUp(params: SignUpRequest.Params) -> AnyPublisher<SignUpResponseModel, Error> {
+    public func signUp(params: SignUpRequest.Params) -> AnyPublisher<SignUpResponseModel, Error> {
         let request = SignUpRequest(params: params)
         return requester.fetch(request: request)
     }
     
-    func validate(params: SignUpValidationRequest.PhoneQuery)
-    -> AnyPublisher<SignUpValidationRequest.Model, Error> {
+    public func validate(params: SignUpValidationRequest.PhoneQuery)
+    -> AnyPublisher<SignUpValidationResponseModel, Error> {
         let request = SignUpValidationRequest(queries: params)
         return requester.fetch(request: request)
     }
     
-    func resetPassword(
+    public func resetPassword(
         email: String
-    ) -> AnyPublisher<ResetPasswordRequest.Model, Error> {
+    ) -> AnyPublisher<ResetPasswordResponseModel, Error> {
         let request = ResetPasswordRequest(queries: .init(type: 1, email: email))
         return requester.fetch(request: request)
     }

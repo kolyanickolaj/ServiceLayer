@@ -6,7 +6,7 @@
 //
 import Foundation
 
-protocol BaseRequest: RequestResource {
+public protocol BaseRequest: RequestResource {
     var zone: RequestZone { get }
     var method: HTTP.Method { get }
     var baseURL: URL { get }
@@ -20,27 +20,27 @@ protocol BaseRequest: RequestResource {
 }
 
 extension BaseRequest {
-    var zone: RequestZone {
+    public var zone: RequestZone {
         .public
     }
     
-    var method: HTTP.Method {
+    public var method: HTTP.Method {
         .GET
     }
 
-    var path: String? {
+    public var path: String? {
         nil
     }
     
-    var apiVersion: ApiVersion {
+    public var apiVersion: ApiVersion {
         .v3
     }
     
-    var queryItems: [URLQueryItem]? {
+    public var queryItems: [URLQueryItem]? {
         nil
     }
 
-    var headers: HTTP.Headers? {
+    public var headers: HTTP.Headers? {
         defaultHeaders
     }
     
@@ -51,11 +51,11 @@ extension BaseRequest {
         ]
     }
     
-    func makeBody() throws -> Data? {
+    public func makeBody() throws -> Data? {
         nil
     }
     
-    var apiLevel: String {
+    public var apiLevel: String {
         switch apiVersion {
         case .api: return "api"
         case .v1: return "api/v1"
@@ -69,6 +69,6 @@ extension BaseRequest {
     }
 }
 
-enum ApiVersion: String {
+public enum ApiVersion: String {
     case v1, v2, v3, api
 }

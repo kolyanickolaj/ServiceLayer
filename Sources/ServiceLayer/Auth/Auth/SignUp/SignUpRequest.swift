@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SignUpRequest: BaseRequest {
+public final class SignUpRequest: BaseRequest {
     
     private let params: Params
     
@@ -16,32 +16,32 @@ final class SignUpRequest: BaseRequest {
         let signature: String
     }
     
-    struct Params {
+    public struct Params {
         let queries: Query
         let timestamp: Int
         let signature: String
     }
     
-    var method: HTTP.Method {
+    public var method: HTTP.Method {
         .POST
     }
     
-    var path: String? {
+    public var path: String? {
         "registration"
     }
     
-    var apiVersion: ApiVersion {
+    public var apiVersion: ApiVersion {
         .v2
     }
     
-    var headers: HTTP.Headers? {
+    public var headers: HTTP.Headers? {
         var headers = defaultHeaders
         headers["X-Signature"] = params.signature
         headers["X-Timestamp"] = "\(params.timestamp)"
         return headers
     }
     
-    func makeBody() throws -> Data? {
+    public func makeBody() throws -> Data? {
         let encoder = JSONEncoder()
         return try encoder.encode(params.queries)
     }

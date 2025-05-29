@@ -7,16 +7,16 @@
 
 import Foundation
 
-typealias SignUpResponseModel = SignUpRequest.Model
+public typealias SignUpResponseModel = SignUpRequest.Model
 
 extension SignUpRequest: ModelRequest {
     
-    struct Model: Codable, JSONParsable {
+    public struct Model: Codable, JSONParsable {
         let id: Int
         let token: String
     }
     
-    var payloadKey: String? {
-        return "data"
+    public var payloadKey: String? {
+        "data"
     }
 }

@@ -7,29 +7,29 @@
 
 import Foundation
 
-final class SignUpValidationRequest: BaseRequest {
+public final class SignUpValidationRequest: BaseRequest {
     
-    struct PhoneQuery: Codable {
+    public struct PhoneQuery: Codable {
         let phone: String
         let prefix: String
     }
 
     private let queries: Codable
 
-    var method: HTTP.Method {
+    public var method: HTTP.Method {
         .POST
     }
     
-    var path: String? {
+    public var path: String? {
         "registration/validation"
     }
     
-    func makeBody() throws -> Data? {
+    public func makeBody() throws -> Data? {
         let encoder = JSONEncoder()
         return try encoder.encode(queries)
     }
     
-    var apiVersion: ApiVersion {
+    public var apiVersion: ApiVersion {
         .v2
     }
 

@@ -7,14 +7,16 @@
 
 import Foundation
 
+public typealias SignUpValidationResponseModel = SignUpValidationRequest.Model
+
 extension SignUpValidationRequest: ModelRequest {
     
-    struct Model: Codable, JSONParsable {
+    public struct Model: Codable, JSONParsable {
         let status: String
         let code: Int
     }
     
-    var payloadKey: String? {
-        return nil
+    public var payloadKey: String? {
+        nil
     }
 }
