@@ -17,7 +17,7 @@ public class URLErrorMethodProposer: MethodProposing {
         }
     }
     
-    public init() { }
+    public init() {}
 }
 
 // MARK: - Supporting methods

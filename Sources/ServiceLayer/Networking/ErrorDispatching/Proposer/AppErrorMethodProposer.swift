@@ -8,6 +8,8 @@
 import Foundation
 
 public final class AppErrorMethodProposer: MethodProposing {
+    public init() {}
+    
     public func proposeMethod(toHandle error: Error) -> Proposition? {
         switch error {
         case is UnauthorizedError:
