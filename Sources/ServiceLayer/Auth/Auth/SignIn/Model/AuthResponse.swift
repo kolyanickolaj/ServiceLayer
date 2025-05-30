@@ -18,8 +18,9 @@ public struct Welcome: Codable {
 // MARK: - DataClass
 
 public struct AuthResponse: Codable, JSONParsable {
+    public let token: String
     let id: Int
-    let bmToken, token: String
+    let bmToken: String
     let bindingContracts: BindingContracts
     let notification: Notification
 }
