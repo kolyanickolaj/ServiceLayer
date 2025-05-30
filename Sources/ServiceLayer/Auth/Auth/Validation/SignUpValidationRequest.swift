@@ -20,7 +20,7 @@ public final class SignUpValidationRequest: BaseRequest {
         .POST
     }
     
-    public var path: String? {
+    public var path: String {
         "registration/validation"
     }
     

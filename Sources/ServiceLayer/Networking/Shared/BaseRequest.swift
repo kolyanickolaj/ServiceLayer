@@ -10,7 +10,7 @@ public protocol BaseRequest: RequestResource {
     var zone: RequestZone { get }
     var method: HTTP.Method { get }
     var baseURL: URL { get }
-    var path: String? { get }
+    var path: String { get }
     var apiVersion: ApiVersion { get }
     var apiLevel: String { get }
     var queryItems: [URLQueryItem]? { get }
@@ -28,8 +28,8 @@ extension BaseRequest {
         .GET
     }
 
-    public var path: String? {
-        nil
+    public var path: String {
+        ""
     }
     
     public var apiVersion: ApiVersion {

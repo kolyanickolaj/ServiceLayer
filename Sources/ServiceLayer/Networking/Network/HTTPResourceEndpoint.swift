@@ -20,7 +20,7 @@ public protocol HTTPResourceEndpoint {
     var baseURL: URL { get }
 
     /// The URL's path subcomponent.
-    var path: String? { get }
+    var path: String { get }
         
     /// The Api Version.
     var apiLevel: String { get }
@@ -39,7 +39,7 @@ public protocol HTTPResourceEndpoint {
 }
 
 extension HTTPResourceEndpoint {
-    var path: String? { nil }
+    var path: String { "" }
     var queryItems: [URLQueryItem]? { nil }
     var headers: HTTP.Headers? { nil }
     
@@ -56,7 +56,8 @@ extension HTTPResourceEndpoint {
             components.queryItems = (components.queryItems ?? []) + queryItems
         }
         
-        if let path = path {
+        print("__--path = \(path)")
+        if !path.isEmpty {
             let pullPath = NSString.path(withComponents: ["/" + apiLevel + "/" + path])
             components.path = components.path.appending(pullPath).replacingOccurrences(of: "//", with: "/")
         }

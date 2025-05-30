@@ -19,7 +19,7 @@ public final class ResetPasswordRequest: BaseRequest {
         .POST
     }
 
-    public var path: String? {
+    public var path: String {
         "user/password/reset"
     }
     

@@ -25,7 +25,7 @@ final class GameProducerRequest: BaseRequest {
         .v2
     }
     
-    var path: String? {
+    var path: String {
         "casino/producer"
     }
 }

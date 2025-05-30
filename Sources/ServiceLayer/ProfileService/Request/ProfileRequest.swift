@@ -23,7 +23,7 @@ final class ProfileRequest: BaseRequest, ModelRequest {
         .GET
     }
 
-    var path: String? {
+    var path: String {
         "user/get-info"
     }
     

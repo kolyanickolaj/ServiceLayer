@@ -26,7 +26,7 @@ public final class SignUpRequest: BaseRequest {
         .POST
     }
     
-    public var path: String? {
+    public var path: String {
         "registration"
     }
     

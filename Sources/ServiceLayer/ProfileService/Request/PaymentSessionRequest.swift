@@ -21,7 +21,7 @@ public final class PaymentSessionRequest: BaseRequest, ModelRequest {
         .POST
     }
 
-    public var path: String? {
+    public var path: String {
         "user/pay-session"
     }
     

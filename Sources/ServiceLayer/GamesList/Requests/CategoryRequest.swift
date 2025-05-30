@@ -26,7 +26,7 @@ final class CategoryRequest: BaseRequest, ModelRequest {
         .v2
     }
     
-    var path: String? {
+    var path: String {
         "casino/category"
     }
     

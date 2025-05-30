@@ -21,7 +21,7 @@ final class TranslationRequest: BaseRequest, ModelRequest {
         .GET
     }
 
-    var path: String? {
+    var path: String {
         "translation/get"
     }
     

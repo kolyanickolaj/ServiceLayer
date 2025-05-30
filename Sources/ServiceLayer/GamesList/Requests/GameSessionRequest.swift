@@ -34,7 +34,7 @@ public final class GameSessionRequest: BaseRequest {
         .api
     }
     
-    public var path: String? {
+    public var path: String {
         "casino/create-game-session"
     }
     

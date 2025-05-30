@@ -23,7 +23,7 @@ final class SignInRequest: BaseRequest, ModelRequest {
         .POST
     }
 
-    var path: String? {
+    var path: String {
         "auth"
     }
     

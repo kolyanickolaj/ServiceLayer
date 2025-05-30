@@ -11,7 +11,7 @@ final class ConfigRequest: BaseRequest, ModelRequest {
 
     typealias Model = String
     
-    var path: String? {
+    var path: String {
         "v2/configurations"
     }
 
