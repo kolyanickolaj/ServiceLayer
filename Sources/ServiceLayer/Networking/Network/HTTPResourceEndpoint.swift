@@ -56,7 +56,6 @@ extension HTTPResourceEndpoint {
             components.queryItems = (components.queryItems ?? []) + queryItems
         }
         
-        print("__--path = \(path)")
         if !path.isEmpty {
             let pullPath = NSString.path(withComponents: ["/" + apiLevel + "/" + path])
             components.path = components.path.appending(pullPath).replacingOccurrences(of: "//", with: "/")
