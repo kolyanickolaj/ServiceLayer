@@ -15,4 +15,8 @@ public enum ServiceLayer {
     public static func configure(_ constants: ModuleConstants) {
         self.constants = constants
     }
+    
+    public static var isConfigured: Bool {
+        self.constants != nil
+    }
 }
