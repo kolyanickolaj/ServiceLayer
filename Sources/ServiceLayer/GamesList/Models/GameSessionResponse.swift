@@ -10,8 +10,8 @@ import Foundation
 
 public struct GameSessionResponse: Codable, JSONParsable {
     
-     let launchOptions: GameLaunchOptions
-     let gameLaunchUrl: String?
+    public let launchOptions: GameLaunchOptions
+    public let gameLaunchUrl: String?
 
     public static func from(_ json: JSON) -> GameSessionResponse? {
         let launchOptionsJson = json["launch_options"]
