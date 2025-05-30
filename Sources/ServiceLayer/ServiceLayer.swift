@@ -3,16 +3,16 @@
 
 import Foundation
 
-protocol ModuleConstants {
+public protocol ModuleConstants {
     var platformHost: URL { get }
     var host: URL { get }
     var userAgent: String { get }
 }
 
-enum ServiceLayer {
+public enum ServiceLayer {
     static var constants: ModuleConstants!
     
-    static func configure(_ constants: ModuleConstants) {
+    public static func configure(_ constants: ModuleConstants) {
         self.constants = constants
     }
 }
