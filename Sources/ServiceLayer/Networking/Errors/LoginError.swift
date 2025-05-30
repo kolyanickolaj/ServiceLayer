@@ -57,7 +57,7 @@ extension LoginError {
     }
 }
 
-enum LoginErrors: CustomHandlingMethod {
+public enum LoginErrors: CustomHandlingMethod {
     case secondFactorAuth(error: String)
     case invalidCreds(remote: String, local: String)
     case `default`(remote: String)
