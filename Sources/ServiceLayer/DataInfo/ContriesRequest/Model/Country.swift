@@ -10,15 +10,15 @@ import Foundation
 public struct Country: Codable, JSONParsable {
     private let hasProvinceInt: Int
     
-    let id: Int
-    let dialCode: String
-    let name: String
-    let flagUrl: ImageUrl
-    let alpha2: String
-    let hasFiscalRegions: Int
-    let needConfirmationModal, hasPromoCodes: Bool
-    var hasProvince: Bool { return hasProvinceInt == 1 }
-    let requiredAge: Int
+    public let id: Int
+    public let dialCode: String
+    public let name: String
+    public let flagUrl: ImageUrl
+    public let alpha2: String
+    public let hasFiscalRegions: Int
+    public let needConfirmationModal, hasPromoCodes: Bool
+    public var hasProvince: Bool { return hasProvinceInt == 1 }
+    public let requiredAge: Int
     
     enum CodingKeys: String, CodingKey {
         case id, dialCode, name, flagUrl

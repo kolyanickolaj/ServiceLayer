@@ -12,9 +12,9 @@ public typealias Province = ProvincesRequest.Model
 extension ProvincesRequest: ModelRequest {
     
     public struct Model: Codable, JSONParsable {
-        let id: Int
-        let name: String
-        let countryAlpha2Code: String
+        public let id: Int
+        public let name: String
+        public let countryAlpha2Code: String
     }
     
     public var payloadKey: String? {

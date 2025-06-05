@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageUrl: Codable {
-    let square: URL
-    let rectangle: URL
+public struct ImageUrl: Codable {
+    public let square: URL
+    public let rectangle: URL
 }

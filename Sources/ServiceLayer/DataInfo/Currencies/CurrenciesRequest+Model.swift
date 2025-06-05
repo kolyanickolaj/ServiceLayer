@@ -12,10 +12,10 @@ public typealias Currency = CurrenciesRequest.Model
 extension CurrenciesRequest: ModelRequest {
     
     public struct Model: Codable, JSONParsable {
-        let enabled: Int
-        let codeNumber: String?
-        let code, name: String
-        let icon, iconURL: String?
+        public let enabled: Int
+        public let codeNumber: String?
+        public let code, name: String
+        public let icon, iconURL: String?
     }
     
     public var payloadKey: String? {
