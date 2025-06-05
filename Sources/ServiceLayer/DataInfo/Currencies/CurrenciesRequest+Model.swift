@@ -11,14 +11,14 @@ typealias Currency = CurrenciesRequest.Model
 
 extension CurrenciesRequest: ModelRequest {
     
-    struct Model: Codable, JSONParsable {
+    public struct Model: Codable, JSONParsable {
         let enabled: Int
         let codeNumber: String?
         let code, name: String
         let icon, iconURL: String?
     }
     
-    var payloadKey: String? {
+    public var payloadKey: String? {
         "data.currencies"
     }
 }

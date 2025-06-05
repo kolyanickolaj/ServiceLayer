@@ -6,13 +6,12 @@
 //
 
 
-final class CurrenciesRequest: BaseRequest {
-    
-    var apiVersion: ApiVersion {
+public final class CurrenciesRequest: BaseRequest {
+    public var apiVersion: ApiVersion {
         .api
     }
     
-    var path: String? {
+    public var path: String? {
         "data/get-currencies"
     }
 }

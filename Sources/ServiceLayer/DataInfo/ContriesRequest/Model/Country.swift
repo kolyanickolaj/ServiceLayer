@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Country: Codable, JSONParsable {
+public struct Country: Codable, JSONParsable {
     private let hasProvinceInt: Int
     
     let id: Int

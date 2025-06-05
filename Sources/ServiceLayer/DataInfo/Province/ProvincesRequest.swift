@@ -7,17 +7,16 @@
 
 import Foundation
 
-final class ProvincesRequest: BaseRequest {
-    
-    var apiVersion: ApiVersion {
+public final class ProvincesRequest: BaseRequest {
+    public var apiVersion: ApiVersion {
         .api
     }
     
-    var path: String? {
+    public var path: String? {
         "data/provinces"
     }
     
-    var queryItems: [URLQueryItem]? {
+    public var queryItems: [URLQueryItem]? {
         var queries: [URLQueryItem] = []
         if let country {
             queries.append(.init(name: "countryAlpha2Code", value: country))

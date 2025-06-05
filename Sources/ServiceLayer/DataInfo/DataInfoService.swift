@@ -12,29 +12,26 @@ private extension String {
     static let countriesCacheId = "countriesCacheId"
 }
 
-protocol IDataInfoService: AnyObject {
+public protocol IDataInfoService: AnyObject {
     func cachedCountries() -> (isValid: Bool, [Country])
     func getCountries() -> AnyPublisher<[Country], Error>
     func getCurrencies() -> AnyPublisher<[CurrenciesRequest.Model], Error>
     func getProvinces(country: String?) -> AnyPublisher<[ProvincesRequest.Model], Error>
 }
 
-final class DataInfoService: IDataInfoService {
-
-    // Dependecies
+public final class DataInfoService: IDataInfoService {
     private let requester: Requester
     private let storage: StorageAuthoinjection
 
-    // MARK: - Inits
-
-    init(requester: Requester, storage: @escaping StorageAuthoinjection) {
+    public init(
+        requester: Requester,
+        storage: @escaping StorageAuthoinjection
+    ) {
         self.requester = requester
         self.storage = storage
     }
-
-    // MARK: - IDataInfoService
-
-    func getCountries() -> AnyPublisher<[Country], Error> {
+    
+    public func getCountries() -> AnyPublisher<[Country], Error> {
         let request = GetCountriesRequest()
         return requester.fetchList(request: request)
             .handleEvents(receiveOutput: { [weak self] countries in
@@ -48,17 +45,17 @@ final class DataInfoService: IDataInfoService {
             .eraseToAnyPublisher()
     }
     
-    func getCurrencies() -> AnyPublisher<[CurrenciesRequest.Model], Error> {
+    public func getCurrencies() -> AnyPublisher<[CurrenciesRequest.Model], Error> {
         let request = CurrenciesRequest()
         return requester.fetchList(request: request)
     }
     
-    func getProvinces(country: String?) -> AnyPublisher<[ProvincesRequest.Model], Error> {
+    public func getProvinces(country: String?) -> AnyPublisher<[ProvincesRequest.Model], Error> {
         let request = ProvincesRequest(country: country)
         return requester.fetchList(request: request)
     }
     
-    func cachedCountries() -> (isValid: Bool, [Country]) {
+    public func cachedCountries() -> (isValid: Bool, [Country]) {
         guard let dataObject = storage()?.fetch(DataObject.self, identifier: .countriesCacheId),
               let cached: [Country] = JSONToDataConverter.convert(data: dataObject.data) else {
             return (false, [])
