@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias Province = ProvincesRequest.Model
+public typealias Province = ProvincesRequest.Model
 
 extension ProvincesRequest: ModelRequest {
     

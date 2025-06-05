@@ -15,8 +15,8 @@ private extension String {
 public protocol IDataInfoService: AnyObject {
     func cachedCountries() -> (isValid: Bool, [Country])
     func getCountries() -> AnyPublisher<[Country], Error>
-    func getCurrencies() -> AnyPublisher<[CurrenciesRequest.Model], Error>
-    func getProvinces(country: String?) -> AnyPublisher<[ProvincesRequest.Model], Error>
+    func getCurrencies() -> AnyPublisher<[Currency], Error>
+    func getProvinces(country: String?) -> AnyPublisher<[Province], Error>
 }
 
 public final class DataInfoService: IDataInfoService {
@@ -45,12 +45,12 @@ public final class DataInfoService: IDataInfoService {
             .eraseToAnyPublisher()
     }
     
-    public func getCurrencies() -> AnyPublisher<[CurrenciesRequest.Model], Error> {
+    public func getCurrencies() -> AnyPublisher<[Currency], Error> {
         let request = CurrenciesRequest()
         return requester.fetchList(request: request)
     }
     
-    public func getProvinces(country: String?) -> AnyPublisher<[ProvincesRequest.Model], Error> {
+    public func getProvinces(country: String?) -> AnyPublisher<[Province], Error> {
         let request = ProvincesRequest(country: country)
         return requester.fetchList(request: request)
     }

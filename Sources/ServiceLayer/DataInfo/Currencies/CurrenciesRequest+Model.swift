@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias Currency = CurrenciesRequest.Model
+public typealias Currency = CurrenciesRequest.Model
 
 extension CurrenciesRequest: ModelRequest {
     
