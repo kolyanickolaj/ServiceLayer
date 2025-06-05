@@ -7,8 +7,6 @@
 
 import Foundation
 
-public typealias StorageAuthoinjection = () -> IStorage?
-
 public protocol IStorage {
 
     func save<T: Persistable & TIdentifiable>(identifier: String, model: T)

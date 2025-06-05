@@ -21,11 +21,11 @@ public protocol IDataInfoService: AnyObject {
 
 public final class DataInfoService: IDataInfoService {
     private let requester: Requester
-    private let storage: StorageAuthoinjection
+    private let storage: IStorage
 
     public init(
         requester: Requester,
-        storage: @escaping StorageAuthoinjection
+        storage: IStorage
     ) {
         self.requester = requester
         self.storage = storage
@@ -39,7 +39,7 @@ public final class DataInfoService: IDataInfoService {
                     return
                 }
                 let model = DataObject(identifier: .countriesCacheId, data: data)
-                self?.storage()?.save(model: model)
+                self?.storage.save(model: model)
             })
             .share()
             .eraseToAnyPublisher()
@@ -56,7 +56,7 @@ public final class DataInfoService: IDataInfoService {
     }
     
     public func cachedCountries() -> (isValid: Bool, [Country]) {
-        guard let dataObject = storage()?.fetch(DataObject.self, identifier: .countriesCacheId),
+        guard let dataObject = storage.fetch(DataObject.self, identifier: .countriesCacheId),
               let cached: [Country] = JSONToDataConverter.convert(data: dataObject.data) else {
             return (false, [])
         }
