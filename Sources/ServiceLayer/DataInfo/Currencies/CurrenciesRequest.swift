@@ -11,7 +11,7 @@ public final class CurrenciesRequest: BaseRequest {
         .api
     }
     
-    public var path: String? {
+    public var path: String {
         "data/get-currencies"
     }
 }

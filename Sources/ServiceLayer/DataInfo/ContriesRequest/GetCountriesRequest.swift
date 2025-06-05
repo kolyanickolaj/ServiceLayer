@@ -15,7 +15,7 @@ final class GetCountriesRequest: BaseRequest, ModelRequest {
         .api
     }
     
-    var path: String? {
+    var path: String {
         "data/get-countries"
     }
 
