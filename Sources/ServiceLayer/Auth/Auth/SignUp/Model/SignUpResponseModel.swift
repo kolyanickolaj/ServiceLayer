@@ -10,10 +10,9 @@ import Foundation
 public typealias SignUpResponseModel = SignUpRequest.Model
 
 extension SignUpRequest: ModelRequest {
-    
     public struct Model: Codable, JSONParsable {
-        let id: Int
-        let token: String
+        public let id: Int
+        public let token: String
     }
     
     public var payloadKey: String? {
