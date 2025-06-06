@@ -15,6 +15,10 @@ public protocol ISignatureService {
 }
 
 public struct SignatureService: ISignatureService {
+    public init(privateKeyRawRepresentation: Data) {
+        self.privateKeyRawRepresentation = privateKeyRawRepresentation
+    }
+    
     let privateKeyRawRepresentation: Data
 
     public func signature(for data: Data) throws -> String {
