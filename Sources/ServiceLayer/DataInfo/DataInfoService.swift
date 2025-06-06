@@ -8,12 +8,7 @@
 import Foundation
 import Combine
 
-private extension String {
-    static let countriesCacheId = "countriesCacheId"
-}
-
 public protocol IDataInfoService: AnyObject {
-//    func cachedCountries() -> (isValid: Bool, [Country])
     func getCountries() -> AnyPublisher<[Country], Error>
     func getCurrencies() -> AnyPublisher<[Currency], Error>
     func getProvinces(country: String?) -> AnyPublisher<[Province], Error>
@@ -21,28 +16,16 @@ public protocol IDataInfoService: AnyObject {
 
 public final class DataInfoService: IDataInfoService {
     private let requester: Requester
-//    private let storage: IStorage
 
     public init(
-        requester: Requester,
-//        storage: IStorage
+        requester: Requester
     ) {
         self.requester = requester
-//        self.storage = storage
     }
     
     public func getCountries() -> AnyPublisher<[Country], Error> {
         let request = GetCountriesRequest()
         return requester.fetchList(request: request)
-//            .handleEvents(receiveOutput: { [weak self] countries in
-//                guard let data = JSONToDataConverter.convert(model: countries) else {
-//                    return
-//                }
-//                let model = DataObject(identifier: .countriesCacheId, data: data)
-//                self?.storage.save(model: model)
-//            })
-//            .share()
-//            .eraseToAnyPublisher()
     }
     
     public func getCurrencies() -> AnyPublisher<[Currency], Error> {
@@ -54,14 +37,4 @@ public final class DataInfoService: IDataInfoService {
         let request = ProvincesRequest(country: country)
         return requester.fetchList(request: request)
     }
-    
-//    public func cachedCountries() -> (isValid: Bool, [Country]) {
-//        guard let dataObject = storage.fetch(DataObject.self, identifier: .countriesCacheId),
-//              let cached: [Country] = JSONToDataConverter.convert(data: dataObject.data) else {
-//            return (false, [])
-//        }
-//        
-//        let isValid = (Date().timeIntervalSince1970 - dataObject.timestamp) < .cacheLifetime1Day
-//        return (isValid, cached)
-//    }
 }
