@@ -24,7 +24,11 @@ let package = Package(
             dependencies: [
                 .product(name: "SwiftyJSON", package: "SwiftyJSON"),
                 "Swinject"
-            ]),
+            ],
+            resources: [
+                .process("DB.xcdatamodeld")
+            ]
+        ),
         .testTarget(
             name: "ServiceLayerTests",
             dependencies: ["ServiceLayer"]
