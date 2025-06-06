@@ -8,18 +8,17 @@
 import Foundation
 
 public final class SignUpRequest: BaseRequest {
-    
     private let params: Params
     
-    struct Signature {
-        let timestamp: Int
-        let signature: String
+    public struct Signature {
+        public let timestamp: Int
+        public let signature: String
     }
     
     public struct Params {
-        let queries: Query
-        let timestamp: Int
-        let signature: String
+        public let queries: Query
+        public let timestamp: Int
+        public let signature: String
     }
     
     public var method: HTTP.Method {
