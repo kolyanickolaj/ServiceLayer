@@ -19,16 +19,14 @@ public final class CoreDataStorage<ResultType> where ResultType : NSManagedObjec
     private(set) lazy var context: NSManagedObjectContext = persistentContainer.viewContext
     private lazy var persistentContainer: NSPersistentContainer = {
         guard let modelURL = Bundle.module.url(forResource: "DB", withExtension: "momd") else {
-                    fatalError("❌ Couldn't find DB.momd in Bundle.module")
-                }
+            fatalError("❌ Couldn't find DB.momd in Bundle.module")
+        }
 
-                guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
-                    fatalError("❌ Couldn't load model from URL \(modelURL)")
-                }
+        guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
+            fatalError("❌ Couldn't load model from URL \(modelURL)")
+        }
 
-                // 2. Create container using that model
         let container = NSPersistentContainer(name: "DB", managedObjectModel: model)
-//        let container = NSPersistentContainer(name: containerName)
         container.loadPersistentStores(completionHandler: { (_, error) in
             container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             if let error = error as NSError? {
