@@ -10,11 +10,7 @@ import CoreData
 
 public final class CoreDataStorage<ResultType> where ResultType : NSManagedObject {
     
-    private let containerName: String
-    
-    public init(containerName: String) {
-        self.containerName = containerName
-    }
+    public init() {}
     
     private(set) lazy var context: NSManagedObjectContext = persistentContainer.viewContext
     private lazy var persistentContainer: NSPersistentContainer = {
