@@ -9,4 +9,5 @@ import Foundation
 public struct IPInfo: Decodable {
     public let country: String
     public let country_name: String
+    public let region: String
 }
