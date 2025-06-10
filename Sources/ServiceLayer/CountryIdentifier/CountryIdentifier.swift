@@ -12,6 +12,8 @@ public protocol CountryIdentifierProtocol {
 }
 
 public final class CountryIdentifier: CountryIdentifierProtocol {
+    public init() {}
+    
     public func fetchUserCountry() async throws -> IPInfo {
         let url = URL(string: "https://ipapi.co/json/")!
 
