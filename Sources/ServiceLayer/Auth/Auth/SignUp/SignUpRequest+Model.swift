@@ -54,5 +54,9 @@ extension SignUpRequest {
 }
 
 public struct Tracking: Codable {
-    let subid: String?
+    public let subid: String?
+    
+    public init(subid: String?) {
+        self.subid = subid
+    }
 }
