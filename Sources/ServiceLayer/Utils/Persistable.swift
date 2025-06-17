@@ -12,13 +12,10 @@ public protocol TIdentifiable {
     var identifier: String { get }
 }
 
-public protocol CoreDataModel {
-    var entityName: String { get }
-}
-
 public protocol Persistable {
     associatedtype DBType: NSManagedObject
-
+    
+    static var entityName: String { get }
     static var saveBatchSize: Int { get }
     static var removeBatchSize: Int { get }
     static var hasRelationships: Bool { get }
@@ -27,6 +24,8 @@ public protocol Persistable {
 }
 
 extension Persistable {
+    public static var entityName: String { "DBDataObject" }
+    
     public static var saveBatchSize: Int { 100 }
 
     public static var removeBatchSize: Int { 100 }
@@ -37,7 +36,7 @@ extension Persistable {
         print("__--Creating entity: \(DBType.entityName)")
         print("__--Entities in model: \(context.persistentStoreCoordinator?.managedObjectModel.entities.map { $0.name ?? "nil" } ?? [])")
         guard let entity = NSEntityDescription.insertNewObject(
-            forEntityName: DBType.entityName, into: context) as? DBType
+            forEntityName: Self.entityName, into: context) as? DBType
         else {
             fatalError("Can't find model \(DBType.self)")
         }
