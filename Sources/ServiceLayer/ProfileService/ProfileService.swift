@@ -30,7 +30,11 @@ public final class ProfileService: IProfileService {
 
     // MARK: - Inits
 
-    public init(requester: Requester, authProvider: IAuthorizationProvider, storage: IStorage) {
+    public init(
+        requester: Requester,
+        authProvider: IAuthorizationProvider,
+        storage: IStorage
+    ) {
         self.requester = requester
         self.authProvider = authProvider
         self.storage = storage
