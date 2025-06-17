@@ -15,7 +15,6 @@ public protocol TIdentifiable {
 public protocol Persistable {
     associatedtype DBType: NSManagedObject
     
-    static var entityName: String { get }
     static var saveBatchSize: Int { get }
     static var removeBatchSize: Int { get }
     static var hasRelationships: Bool { get }
@@ -24,8 +23,6 @@ public protocol Persistable {
 }
 
 extension Persistable {
-    public static var entityName: String { "DBDataObject" }
-    
     public static var saveBatchSize: Int { 100 }
 
     public static var removeBatchSize: Int { 100 }
@@ -33,8 +30,6 @@ extension Persistable {
     public static var hasRelationships: Bool { true }
     
     public func createPersistanceObject(_ context: NSManagedObjectContext) -> DBType {
-        print("__--Creating entity: \(DBType.entityName), uu = \(Self.entityName)")
-        print("__--Entities in model: \(context.persistentStoreCoordinator?.managedObjectModel.entities.map { $0.name ?? "nil" } ?? [])")
         guard let entity = NSEntityDescription.insertNewObject(forEntityName: DBType.entityName, into: context) as? DBType else {
             fatalError("Can't find model \(DBType.self)")
         }
@@ -44,7 +39,6 @@ extension Persistable {
 
 extension NSManagedObject {
     public static var entityName: String {
-        return entity().name ?? ""
-        return String(describing: self)
+        entity().name ?? ""
     }
 }
