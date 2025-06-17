@@ -47,11 +47,11 @@ extension Persistable {
 
 extension NSManagedObject {
     public static var entityName: String {
-        if let self = self as? CoreDataModel {
-            print("__--entityName = \(self.entityName)")
-            return self.entityName
-        }
-        print("__--empty entityName = \(entity().name ?? "")")
-        return entity().name ?? ""
+//        if let self = self as? CoreDataModel {
+//            print("__--entityName = \(self.entityName)")
+//            return self.entityName
+//        }
+        print("__-- entityName = \(String(describing: self))")
+        return String(describing: self)
     }
 }
