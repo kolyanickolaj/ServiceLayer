@@ -35,9 +35,7 @@ extension Persistable {
     public func createPersistanceObject(_ context: NSManagedObjectContext) -> DBType {
         print("__--Creating entity: \(DBType.entityName)")
         print("__--Entities in model: \(context.persistentStoreCoordinator?.managedObjectModel.entities.map { $0.name ?? "nil" } ?? [])")
-        guard let entity = NSEntityDescription.insertNewObject(
-            forEntityName: Self.entityName, into: context) as? DBType
-        else {
+        guard let entity = NSEntityDescription.insertNewObject(forEntityName: Self.entityName, into: context) as? DBType else {
             fatalError("Can't find model \(DBType.self)")
         }
         return entity
