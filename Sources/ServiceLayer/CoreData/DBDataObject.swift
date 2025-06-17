@@ -22,6 +22,3 @@ extension DBDataObject {
 
 extension DBDataObject: Identifiable { }
 
-extension DBDataObject: CoreDataModel {
-    public var entityName: String { "DBDataObject" }
-}
