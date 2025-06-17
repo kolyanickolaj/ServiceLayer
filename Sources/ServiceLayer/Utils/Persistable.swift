@@ -34,6 +34,8 @@ extension Persistable {
     public static var hasRelationships: Bool { true }
     
     public func createPersistanceObject(_ context: NSManagedObjectContext) -> DBType {
+        print("__--Creating entity: \(DBType.entityName)")
+        print("__--Entities in model: \(context.persistentStoreCoordinator?.managedObjectModel.entities.map { $0.name ?? "nil" } ?? [])")
         guard let entity = NSEntityDescription.insertNewObject(
             forEntityName: DBType.entityName, into: context) as? DBType
         else {
