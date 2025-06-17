@@ -33,7 +33,6 @@ public final class AuthorizationProvider: IAuthorizationProvider {
     
     public init(storage: AccessTokenStorage) {
         self.storage = storage
-        storage.accessToken = nil
     }
     
     // MARK: - IAuthorizationProvider
