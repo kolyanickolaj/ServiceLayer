@@ -21,7 +21,6 @@ struct DataObject: TIdentifiable {
 }
 
 extension DataObject: Persistable {
-    
     static func from(_ model: DBDataObject) throws -> Self {
         return .init(
             identifier: model.identifier,

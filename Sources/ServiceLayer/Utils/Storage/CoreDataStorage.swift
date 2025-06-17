@@ -36,9 +36,8 @@ public final class CoreDataStorage<ResultType> where ResultType : NSManagedObjec
 // MARK: - IStorage
 
 extension CoreDataStorage: IStorage {
-    
     public func fetch<T>(_ type: T.Type, identifier: String) -> T? where T: TIdentifiable, T: Persistable {
-        return fetch(identifier: identifier)
+        fetch(identifier: identifier)
     }
     
     public func save<T: Persistable & TIdentifiable>(identifier: String, model: T) {
@@ -66,6 +65,7 @@ extension CoreDataStorage: IStorage {
             return []
         }
     }
+    
     public func fetch<T: Persistable & TIdentifiable>(identifier: String) -> [T] {
         do {
             let entityName = String(describing: ResultType.self)
@@ -83,6 +83,6 @@ extension CoreDataStorage: IStorage {
     }
 
     public func fetch<T: Persistable & TIdentifiable>(identifier: String) -> T? {
-        return fetch(identifier: identifier).first
+        fetch(identifier: identifier).first
     }
 }
