@@ -15,9 +15,9 @@ public protocol TIdentifiable {
 public protocol CoreDataModel {
     var entityName: String { get }
 }
-public typealias DBType = NSManagedObject
+
 public protocol Persistable {
-    
+    associatedtype DBType: NSManagedObject
 
     static var saveBatchSize: Int { get }
     static var removeBatchSize: Int { get }
