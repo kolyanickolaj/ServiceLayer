@@ -10,8 +10,8 @@ import Foundation
 public typealias GameCategory = CasinoCategory
 
 public struct CasinoCategory: Codable, Hashable, JSONParsable {
-    let id: Int
-    let name: String
-    let slug: String
-    let dev_id: String?
+    public let id: Int
+    public let name: String
+    public let slug: String
+    public let dev_id: String?
 }

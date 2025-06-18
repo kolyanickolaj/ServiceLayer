@@ -8,9 +8,6 @@
 import Foundation
 
 final class CategoryRequest: BaseRequest, ModelRequest {
-    
-    // MARK: - Properties
-    
     var method: HTTP.Method {
         .GET
     }
@@ -18,6 +15,7 @@ final class CategoryRequest: BaseRequest, ModelRequest {
     var queryItems: [URLQueryItem]? {
         var items: [URLQueryItem] = []
         items.append(.init(name: "isLive", value: "0"))
+        items.append(.init(name: "is_mobile", value: "1"))
         items.append(.init(name: "auth", value: "false"))
         return items
     }
