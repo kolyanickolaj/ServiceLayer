@@ -42,7 +42,7 @@ public struct IbanVerification: Codable {
     }
 }
 
-struct BindingContracts: Codable {
-    let termsAndConditionsAccepted: Bool
-    let privacyPolicyAccepted: Bool
+public struct BindingContracts: Codable {
+    public let termsAndConditionsAccepted: Bool
+    public let privacyPolicyAccepted: Bool
 }

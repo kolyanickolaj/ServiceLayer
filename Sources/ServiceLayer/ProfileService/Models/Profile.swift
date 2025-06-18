@@ -8,24 +8,23 @@
 import Foundation
 
 public struct Profile: Codable, JSONParsable {
-    
-    let id: Int
-    let email: String
-    let nickname: String?
-    let firstName, lastName: String
-    let middleName, address, postCode, city: String?
-    let birthday, userPrefix, phone: String
-    let isVerified: Int
-    let createdAt: String
-    let suburb: String?
-    let gender: Int
-    let currency: String
-    let accounts: [Account]
-    let locale: String?
-    let country: Country
-    let disabledStatusCode: Int
-    let isActivated, isNeedCompleteRegistration, isNeedCompleteMigration, isNeedCurrentPasswordWhenChanging: Bool
-    let bindingContracts: BindingContracts
+    public let id: Int
+    public let email: String
+    public let nickname: String?
+    public let firstName, lastName: String
+    public let middleName, address, postCode, city: String?
+    public let birthday, userPrefix, phone: String
+    public let isVerified: Int
+    public let createdAt: String
+    public let suburb: String?
+    public let gender: Int
+    public let currency: String
+    public let accounts: [Account]
+    public let locale: String?
+    public let country: Country
+    public let disabledStatusCode: Int
+    public let isActivated, isNeedCompleteRegistration, isNeedCompleteMigration, isNeedCurrentPasswordWhenChanging: Bool
+    public let bindingContracts: BindingContracts
 
     enum CodingKeys: String, CodingKey {
         case id, email, nickname
@@ -41,10 +40,10 @@ public struct Profile: Codable, JSONParsable {
         case suburb
     }
     
-    struct Country: Codable {
-        let id: Int
-        let code, name: String
-        let flagURL: ImageUrl
+    public struct Country: Codable {
+        public let id: Int
+        public let code, name: String
+        public let flagURL: ImageUrl
 
         enum CodingKeys: String, CodingKey {
             case id, code, name

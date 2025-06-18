@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Account: Codable, JSONParsable {
-    let id: Int
-    let currency: String
-    let amount: Decimal
-    let isMain: Bool
-    let availableBonuses: Decimal
-    let currencyName: String
-    let availableForWithdrawal: Decimal
+public struct Account: Codable, JSONParsable {
+    public let id: Int
+    public let currency: String
+    public let amount: Decimal
+    public let isMain: Bool
+    public let availableBonuses: Decimal
+    public let currencyName: String
+    public let availableForWithdrawal: Decimal
 
     enum CodingKeys: String, CodingKey {
         case id, currency, amount
