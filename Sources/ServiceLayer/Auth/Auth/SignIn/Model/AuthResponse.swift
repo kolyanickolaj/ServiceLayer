@@ -10,32 +10,32 @@ import Foundation
 // MARK: - Welcome
 
 public struct Welcome: Codable {
-    let data: AuthResponse
-    let code: Int
-    let status: String
+    public let data: AuthResponse
+    public let code: Int
+    public let status: String
 }
 
 // MARK: - DataClass
 
 public struct AuthResponse: Codable, JSONParsable {
     public let token: String
-    let id: Int
-    let bmToken: String
-    let bindingContracts: BindingContracts
-    let notification: Notification
+    public let id: Int
+    public let bmToken: String
+    public let bindingContracts: BindingContracts
+    public let notification: Notification
 }
 
 // MARK: - Notification
 
 public struct Notification: Codable {
-    let ibanVerification: IbanVerification
-    let lastLogoutAt, lastLoggedIn: String
+    public let ibanVerification: IbanVerification
+    public let lastLogoutAt, lastLoggedIn: String
 }
 
 // MARK: - IbanVerification
 
 public struct IbanVerification: Codable {
-    let ibanVerificationRequired: Bool
+    public let ibanVerificationRequired: Bool
 
     enum CodingKeys: String, CodingKey {
         case ibanVerificationRequired = "required"
@@ -45,4 +45,17 @@ public struct IbanVerification: Codable {
 public struct BindingContracts: Codable {
     public let termsAndConditionsAccepted: Bool
     public let privacyPolicyAccepted: Bool
+}
+
+public struct CompPointAccounts: Codable {
+    public let casino, sport: Casino
+}
+
+public struct Casino: Codable {
+    public let status: Int
+    public let redeemable: Redeemable
+}
+
+public struct Redeemable: Codable {
+    public let amount: Int
 }

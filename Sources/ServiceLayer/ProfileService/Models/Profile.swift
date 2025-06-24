@@ -25,6 +25,11 @@ public struct Profile: Codable, JSONParsable {
     public let disabledStatusCode: Int
     public let isActivated, isNeedCompleteRegistration, isNeedCompleteMigration, isNeedCurrentPasswordWhenChanging: Bool
     public let bindingContracts: BindingContracts
+    public let acceptBonuses, bonusType: Int
+    public let compPointAccounts: CompPointAccounts
+    public let compPointSportResetAt: String
+    public let compPointCasinoResetAt: String?
+    public let firstDeposit: Bool
 
     enum CodingKeys: String, CodingKey {
         case id, email, nickname
@@ -38,6 +43,15 @@ public struct Profile: Codable, JSONParsable {
         case isNeedCompleteMigration, isNeedCurrentPasswordWhenChanging, bindingContracts
         case postCode = "post_code"
         case suburb
+        
+        case acceptBonuses = "accept_bonuses"
+        case bonusType, compPointAccounts, compPointSportResetAt, compPointCasinoResetAt
+//        case isVipForbidden = "is_vip_forbidden"
+//        case reactivationSent = "reactivation_sent"
+        case firstDeposit = "first_deposit"
+//        case accounts, locale, country, disabledStatusCode, groups
+//        case isSessionLimitHit = "is_session_limit_hit"
+//        case isBalanceLimitHit = "is_balance_limit_hit"
     }
     
     public struct Country: Codable {

@@ -8,9 +8,6 @@
 import Foundation
 
 final class GameProducerRequest: BaseRequest {
-    
-    // MARK: - Properties
-    
     var method: HTTP.Method {
         .GET
     }
