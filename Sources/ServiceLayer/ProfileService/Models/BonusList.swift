@@ -5,11 +5,8 @@
 //  Created by Nikolai Lipski on 24.06.25.
 //
 
-public struct BonusList: Codable, JSONParsable {
-    public let items: [Bonus]
-}
-
 public struct Bonus: Codable, JSONParsable {
+    public let name: String
     public let id: Int
     public let currency: String
     public let amount: Int
@@ -17,8 +14,8 @@ public struct Bonus: Codable, JSONParsable {
     public let amountInBaseCurrency: Int
     
     enum CodingKeys: String, CodingKey {
+        case currency, baseCurrency, name
         case id = "bonusId"
-        case currency, baseCurrency
         case amount = "bonusAmount"
         case amountInBaseCurrency = "bonusAmountInBaseCurrency"
     }

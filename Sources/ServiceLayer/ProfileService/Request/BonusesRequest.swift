@@ -9,7 +9,7 @@ import Foundation
 
 final class BonusesRequest: BaseRequest, ModelRequest {
 
-    typealias Model = BonusList
+    typealias Model = Bonus
     
     var zone: RequestZone {
         .private
@@ -32,6 +32,6 @@ final class BonusesRequest: BaseRequest, ModelRequest {
     }
 
     var payloadKey: String? {
-        "data"
+        "data.items"
     }
 }

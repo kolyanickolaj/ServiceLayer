@@ -18,7 +18,7 @@ public protocol IProfileService: AnyObject {
     func getProfile() -> AnyPublisher<Profile, Error>
     func cachedProfile() -> (isValid: Bool, Profile?)
     func subscribe() -> ObservingPublisher<Profile?>
-    func getBonuses() -> AnyPublisher<BonusList, Error>
+    func getBonuses() -> AnyPublisher<[Bonus], Error>
 }
 
 public final class ProfileService: IProfileService {
@@ -79,8 +79,8 @@ public final class ProfileService: IProfileService {
         return (true, cached)
     }
     
-    public func getBonuses() -> AnyPublisher<BonusList, Error> {
+    public func getBonuses() -> AnyPublisher<[Bonus], Error> {
         let request = BonusesRequest()
-        return requester.fetch(request: request)
+        return requester.fetchList(request: request)
     }
 }
