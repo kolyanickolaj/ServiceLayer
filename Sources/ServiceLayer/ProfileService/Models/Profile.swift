@@ -25,7 +25,8 @@ public struct Profile: Codable, JSONParsable {
     public let disabledStatusCode: Int
     public let isActivated, isNeedCompleteRegistration, isNeedCompleteMigration, isNeedCurrentPasswordWhenChanging: Bool
     public let bindingContracts: BindingContracts
-    public let acceptBonuses, bonusType: Int
+    public let acceptBonuses: Bool
+    public let bonusType: Int
     public let compPointAccounts: CompPointAccounts
     public let compPointSportResetAt: String
     public let compPointCasinoResetAt: String?
