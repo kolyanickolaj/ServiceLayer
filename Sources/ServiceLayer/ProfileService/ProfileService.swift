@@ -19,6 +19,8 @@ public protocol IProfileService: AnyObject {
     func cachedProfile() -> (isValid: Bool, Profile?)
     func subscribe() -> ObservingPublisher<Profile?>
     func getBonuses() -> AnyPublisher<[Bonus], Error>
+    func getPreferences() -> AnyPublisher<NotificationPreferences, Error>
+    func savePreferences(_ prefs: NotificationPreferences) -> AnyPublisher<SavePreferencesResponse, Error>
 }
 
 public final class ProfileService: IProfileService {
@@ -82,5 +84,20 @@ public final class ProfileService: IProfileService {
     public func getBonuses() -> AnyPublisher<[Bonus], Error> {
         let request = BonusesRequest()
         return requester.fetchList(request: request)
+    }
+    
+    public func getPreferences() -> AnyPublisher<NotificationPreferences, Error> {
+        let request = GetPreferencesRequest()
+        return requester.fetch(request: request)
+    }
+    
+    public func savePreferences(_ prefs:NotificationPreferences) -> AnyPublisher<SavePreferencesResponse, Error> {
+        let request = SavePreferencesRequest(
+            queries: .init(
+                isPhoneAllowed: prefs.isPhoneEnabled,
+                isEmailAllowed: prefs.isEmailEnabled
+            )
+        )
+        return requester.fetch(request: request)
     }
 }
