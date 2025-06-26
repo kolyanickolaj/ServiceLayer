@@ -29,10 +29,6 @@ final class SavePreferencesRequest: BaseRequest, ModelRequest {
         .private
     }
     
-    var baseURL: URL {
-        ServiceLayer.constants.platformHost
-    }
-    
     var method: HTTP.Method {
         .POST
     }

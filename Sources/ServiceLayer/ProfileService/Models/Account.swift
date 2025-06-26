@@ -10,11 +10,11 @@ import Foundation
 public struct Account: Codable, JSONParsable {
     public let id: Int
     public let currency: String
-    public let amount: Decimal
+    public let amount: Double
     public let isMain: Bool
-    public let availableBonuses: Decimal
+    public let availableBonuses: Double
     public let currencyName: String
-    public let availableForWithdrawal: Decimal
+    public let availableForWithdrawal: Double
 
     enum CodingKeys: String, CodingKey {
         case id, currency, amount

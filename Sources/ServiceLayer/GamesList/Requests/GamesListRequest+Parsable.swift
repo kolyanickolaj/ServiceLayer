@@ -22,6 +22,6 @@ extension GamesListRequest: ModelRequest {
     }
  
     var payloadKey: String? {
-        return "data"
+        "data"
     }
 }

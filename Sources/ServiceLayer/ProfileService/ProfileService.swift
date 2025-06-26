@@ -16,7 +16,7 @@ private extension String {
 public protocol IProfileService: AnyObject {
     func paymentSession() -> AnyPublisher<PaymentSessionRequest.Model, Error>
     func getProfile() -> AnyPublisher<Profile, Error>
-    func cachedProfile() -> (isValid: Bool, Profile?)
+    func cachedProfile() -> (isValid: Bool, profile: Profile?)
     func subscribe() -> ObservingPublisher<Profile?>
     func getBonuses() -> AnyPublisher<[Bonus], Error>
     func getPreferences() -> AnyPublisher<NotificationPreferences, Error>
@@ -69,7 +69,7 @@ public final class ProfileService: IProfileService {
             .eraseToAnyPublisher()
     }
     
-    public func cachedProfile() -> (isValid: Bool, Profile?) {
+    public func cachedProfile() -> (isValid: Bool, profile: Profile?) {
         guard authProvider.isAuthorized else {
             return (false, nil)
         }
