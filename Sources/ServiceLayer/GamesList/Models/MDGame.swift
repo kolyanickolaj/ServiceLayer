@@ -14,11 +14,12 @@ public struct MDGame: Codable, Hashable, Equatable, Identifiable {
     public let producer: Producer
     public let isMobile: Int
     public let images: [String: MDGame.Image]?
+    public let isFavorite: Bool
 //    let casinoCategories: [CasinoCategory]
     public let categories: [String]
     public let category: String
     enum CodingKeys: String, CodingKey {
-        case id, title, identifier, identifier2
+        case id, title, identifier, identifier2, isFavorite
         case producerID = "producer_id"
         case producer
         case isMobile = "is_mobile"
