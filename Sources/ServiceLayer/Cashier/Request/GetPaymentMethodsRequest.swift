@@ -32,6 +32,6 @@ final class GetPaymentMethodsRequest: BaseRequest, ModelRequest {
     }
 
     var payloadKey: String? {
-        "data.items"
+        "data.payment_methods"
     }
 }
