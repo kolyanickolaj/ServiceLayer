@@ -8,4 +8,5 @@
 public struct PaymentMethod: Codable, JSONParsable  {
     public let id: String
     public let name: String
+    public let logo: String
 }
