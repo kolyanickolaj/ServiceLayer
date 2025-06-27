@@ -11,9 +11,9 @@ final class GetPaymentMethodsRequest: BaseRequest, ModelRequest {
 
     typealias Model = PaymentMethod
     
-//    var zone: RequestZone {
-//        .private
-//    }
+    var zone: RequestZone {
+        .private
+    }
     
     var baseURL: URL {
         ServiceLayer.constants.platformHost
