@@ -7,11 +7,11 @@
 
 import Combine
 
-protocol CashierServiceProtocol {
+public protocol CashierServiceProtocol {
     func getPaymentMethods() -> AnyPublisher<[PaymentMethod], Error>
 }
 
-final class CashierService: CashierServiceProtocol {
+public final class CashierService: CashierServiceProtocol {
     private let requester: Requester
 //    private let storage: IStorage
 //    private let authProvider: IAuthorizationProvider
@@ -26,7 +26,7 @@ final class CashierService: CashierServiceProtocol {
 //        self.storage = storage
     }
     
-    func getPaymentMethods() -> AnyPublisher<[PaymentMethod], Error> {
+    public func getPaymentMethods() -> AnyPublisher<[PaymentMethod], Error> {
         let request = GetPaymentMethodsRequest()
         return requester.fetchList(request: request)
     }
