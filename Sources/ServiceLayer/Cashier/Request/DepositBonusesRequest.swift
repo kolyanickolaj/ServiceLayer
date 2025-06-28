@@ -9,7 +9,7 @@ import Foundation
 
 final class DepositBonusesRequest: BaseRequest, ModelRequest {
 
-    typealias Model = Bonus
+    typealias Model = DepositBonus
     
     var zone: RequestZone {
         .private
