@@ -9,7 +9,7 @@ import Foundation
 
 final class DeleteFavoriteGameRequest: BaseRequest, ModelRequest {
     struct Query: Codable {
-        private let gameId: Int
+        let gameId: Int
         
         init(
             gameId: Int
@@ -26,6 +26,12 @@ final class DeleteFavoriteGameRequest: BaseRequest, ModelRequest {
     
     var method: HTTP.Method {
         .DELETE
+    }
+    
+    var queryItems: [URLQueryItem]? {
+        var queries: [URLQueryItem] = []
+        queries.append(.init(name: "gameId", value: String(self.queries.gameId)))
+        return queries
     }
     
     var apiVersion: ApiVersion {
