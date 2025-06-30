@@ -9,7 +9,7 @@ import Foundation
 
 final class AddFavoriteGameRequest: BaseRequest, ModelRequest {
     struct Query: Codable {
-        private let gameId: Int
+        let gameId: Int
         
         init(
             gameId: Int
@@ -22,6 +22,12 @@ final class AddFavoriteGameRequest: BaseRequest, ModelRequest {
     
     init(gameId: Int) {
         self.queries = Query(gameId: gameId)
+    }
+    
+    var queryItems: [URLQueryItem]? {
+        var queries: [URLQueryItem] = []
+        queries.append(.init(name: "gameId", value: String(self.queries.gameId)))
+        return queries
     }
     
     var method: HTTP.Method {
