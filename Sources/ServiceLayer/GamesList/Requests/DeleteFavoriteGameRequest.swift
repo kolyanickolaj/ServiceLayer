@@ -28,10 +28,9 @@ final class DeleteFavoriteGameRequest: BaseRequest, ModelRequest {
         .DELETE
     }
     
-    var queryItems: [URLQueryItem]? {
-        var queries: [URLQueryItem] = []
-        queries.append(.init(name: "gameId", value: String(self.queries.gameId)))
-        return queries
+    public func makeBody() throws -> Data? {
+        let encoder = JSONEncoder()
+        return try encoder.encode(queries)
     }
     
     var apiVersion: ApiVersion {

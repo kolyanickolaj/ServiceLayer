@@ -24,10 +24,9 @@ final class AddFavoriteGameRequest: BaseRequest, ModelRequest {
         self.queries = Query(gameId: gameId)
     }
     
-    var queryItems: [URLQueryItem]? {
-        var queries: [URLQueryItem] = []
-        queries.append(.init(name: "gameId", value: String(self.queries.gameId)))
-        return queries
+    func makeBody() throws -> Data? {
+        let encoder = JSONEncoder()
+        return try encoder.encode(queries)
     }
     
     var method: HTTP.Method {
