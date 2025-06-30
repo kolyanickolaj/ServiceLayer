@@ -36,6 +36,10 @@ final class AddFavoriteGameRequest: BaseRequest, ModelRequest {
         "casino/favorite-games/add"
     }
     
+    var zone: RequestZone {
+        .private
+    }
+    
     // MARK: - ModelRequest
     
     typealias Model = AddFavoriteGameResponse

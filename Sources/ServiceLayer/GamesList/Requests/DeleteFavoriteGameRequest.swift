@@ -36,6 +36,10 @@ final class DeleteFavoriteGameRequest: BaseRequest, ModelRequest {
         "casino/favorite-games/remove"
     }
     
+    var zone: RequestZone {
+        .private
+    }
+    
     // MARK: - ModelRequest
     
     typealias Model = DeleteFavoriteGameResponse
