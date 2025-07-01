@@ -31,9 +31,11 @@ public final class AppAvailabilityRequest: BaseRequest {
         .v2
     }
     
-    public func makeBody() throws -> Data? {
-        let encoder = JSONEncoder()
-        return try encoder.encode(queries)
+    public var queryItems: [URLQueryItem]? {
+        var queries: [URLQueryItem] = []
+        queries.append(.init(name: "coordinates[latitude]", value: String(self.queries.latitude)))
+        queries.append(.init(name: "coordinates[longitude]", value: String(self.queries.longitude)))
+        return queries
     }
 
     init(queries: Query) {

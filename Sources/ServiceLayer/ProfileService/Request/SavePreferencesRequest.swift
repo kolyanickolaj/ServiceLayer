@@ -11,19 +11,26 @@ final class SavePreferencesRequest: BaseRequest, ModelRequest {
     typealias Model = SavePreferencesResponse
     
     struct Query: Codable {
-        private let phone_marketing_allowed: Bool
-        private let email_marketing_allowed: Bool
+        let isPhoneAllowed: Bool
+        let isEmailAllowed: Bool
         
         init(
             isPhoneAllowed: Bool,
             isEmailAllowed: Bool
         ) {
-            self.phone_marketing_allowed = isPhoneAllowed
-            self.email_marketing_allowed = isEmailAllowed
+            self.isPhoneAllowed = isPhoneAllowed
+            self.isEmailAllowed = isEmailAllowed
         }
     }
     
     private let queries: Query
+    
+    var queryItems: [URLQueryItem]? {
+        var queries: [URLQueryItem] = []
+        queries.append(.init(name: "phone_marketing_allowed", value: String(self.queries.isPhoneAllowed)))
+        queries.append(.init(name: "email_marketing_allowed", value: String(self.queries.isEmailAllowed)))
+        return queries
+    }
     
     var zone: RequestZone {
         .private
