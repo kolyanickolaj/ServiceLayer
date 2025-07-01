@@ -8,7 +8,7 @@
 import Combine
 
 public protocol CashierServiceProtocol {
-    func getPaymentMethods() -> AnyPublisher<[PaymentMethod], Error>
+    func getPaymentMethods() -> AnyPublisher<PaymentSessionInfo, Error>
     func getDepositBonuses() -> AnyPublisher<[DepositBonus], Error>
 }
 
@@ -21,9 +21,9 @@ public final class CashierService: CashierServiceProtocol {
         self.requester = requester
     }
     
-    public func getPaymentMethods() -> AnyPublisher<[PaymentMethod], Error> {
+    public func getPaymentMethods() -> AnyPublisher<PaymentSessionInfo, Error> {
         let request = GetPaymentMethodsRequest()
-        return requester.fetchList(request: request)
+        return requester.fetch(request: request)
     }
     
     public func getDepositBonuses() -> AnyPublisher<[DepositBonus], Error> {

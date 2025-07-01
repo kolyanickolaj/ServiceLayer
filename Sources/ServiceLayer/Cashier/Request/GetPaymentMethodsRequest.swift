@@ -9,7 +9,7 @@ import Foundation
 
 final class GetPaymentMethodsRequest: BaseRequest, ModelRequest {
 
-    typealias Model = PaymentMethod
+    typealias Model = PaymentSessionInfo
     
     var zone: RequestZone {
         .private
