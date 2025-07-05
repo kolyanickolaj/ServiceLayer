@@ -94,8 +94,8 @@ public final class ProfileService: IProfileService {
     public func savePreferences(_ prefs:NotificationPreferences) -> AnyPublisher<SavePreferencesResponse, Error> {
         let request = SavePreferencesRequest(
             queries: .init(
-                isPhoneAllowed: prefs.isPhoneEnabled,
-                isEmailAllowed: prefs.isEmailEnabled
+                isEmailAllowed: prefs.isEmailEnabled ? 1 : 0,
+                notificationsEnabled: prefs.isPushEnabled
             )
         )
         return requester.fetch(request: request)

@@ -11,29 +11,18 @@ final class SavePreferencesRequest: BaseRequest, ModelRequest {
     typealias Model = SavePreferencesResponse
     
     struct Query: Codable {
-        let isPhoneAllowed: Bool
-        let isEmailAllowed: Bool
-        
-        init(
-            isPhoneAllowed: Bool,
-            isEmailAllowed: Bool
-        ) {
-            self.isPhoneAllowed = isPhoneAllowed
-            self.isEmailAllowed = isEmailAllowed
-        }
+        let isEmailAllowed: Int
+        let notificationsEnabled: Bool
     }
     
     private let queries: Query
     
-    var queryItems: [URLQueryItem]? {
-        var queries: [URLQueryItem] = []
-        queries.append(.init(name: "phone_marketing_allowed", value: String(self.queries.isPhoneAllowed)))
-        queries.append(.init(name: "email_marketing_allowed", value: String(self.queries.isEmailAllowed)))
-        return queries
-    }
-    
     var zone: RequestZone {
         .private
+    }
+    
+    var headers: HTTP.Headers? {
+        ["Content-Type":"application/x-www-form-urlencoded"]
     }
     
     var method: HTTP.Method {
@@ -54,5 +43,14 @@ final class SavePreferencesRequest: BaseRequest, ModelRequest {
     
     init(queries: Query) {
         self.queries = queries
+    }
+    
+    func makeBody() throws -> Data? {
+        var components = URLComponents()
+        components.queryItems = [
+            .init(name: "email_marketing_allowed", value: "\(queries.isEmailAllowed)"),
+            .init(name: "notificationsEnabled", value: "\(queries.notificationsEnabled)")
+        ]
+        return components.percentEncodedQuery?.data(using: .utf8)
     }
 }

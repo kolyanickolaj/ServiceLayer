@@ -7,26 +7,25 @@
 
 public struct NotificationPreferences: Codable, JSONParsable {
     public let isEmailEnabled: Bool
-    public let isPhoneEnabled: Bool
+    public let isPushEnabled: Bool
     
     public init(
-        isPhoneEnabled: Bool = false,
+        isPushEnabled: Bool = false,
         isEmailEnabled: Bool = false
     ) {
-        self.isPhoneEnabled = isPhoneEnabled
+        self.isPushEnabled = isPushEnabled
         self.isEmailEnabled = isEmailEnabled
     }
     
     enum CodingKeys: String, CodingKey {
-        case isPhoneEnabled = "phone_marketing_allowed"
+        case isPushEnabled = "notificationsEnabled"
         case isEmailEnabled = "email_marketing_allowed"
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let isPhoneEnabledInt = try container.decode(Int.self, forKey: .isPhoneEnabled)
-        self.isPhoneEnabled = isPhoneEnabledInt == 1
+        self.isPushEnabled = try container.decode(Bool.self, forKey: .isPushEnabled)
         let isEmailEnabledInt = try container.decode(Int.self, forKey: .isEmailEnabled)
         self.isEmailEnabled = isEmailEnabledInt == 1
     }

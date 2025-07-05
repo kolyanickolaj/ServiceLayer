@@ -8,13 +8,8 @@
 import Foundation
 
 public final class PaymentSessionRequest: BaseRequest, ModelRequest {
-    
     public var zone: RequestZone {
         .private
-    }
-    
-    public var baseURL: URL {
-        ServiceLayer.constants.platformHost
     }
     
     public var method: HTTP.Method {
