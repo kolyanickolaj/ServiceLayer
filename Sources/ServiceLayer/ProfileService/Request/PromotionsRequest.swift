@@ -28,7 +28,9 @@ final class PromotionsRequest: BaseRequest, ModelRequest {
     }
     
     var baseURL: URL {
-        ServiceLayer.constants.host
+        //TODO: fix later
+        URL(string: "https://nationalcasino.com")!
+//        ServiceLayer.constants.host
     }
     
     var method: HTTP.Method {
