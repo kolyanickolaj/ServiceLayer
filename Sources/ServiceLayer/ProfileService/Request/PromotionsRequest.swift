@@ -24,7 +24,7 @@ final class PromotionsRequest: BaseRequest, ModelRequest {
     }
 
     var path: String {
-        "promotion/list?lang=en"
+        "promotion/list"
     }
     
     var apiVersion: ApiVersion {
