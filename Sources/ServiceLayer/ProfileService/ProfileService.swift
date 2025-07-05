@@ -86,6 +86,11 @@ public final class ProfileService: IProfileService {
         return requester.fetchList(request: request)
     }
     
+    public func getPromotions() -> AnyPublisher<[Promotion], Error> {
+        let request = PromotionsRequest()
+        return requester.fetchList(request: request)
+    }
+    
     public func getPreferences() -> AnyPublisher<NotificationPreferences, Error> {
         let request = GetPreferencesRequest()
         return requester.fetch(request: request)

@@ -41,7 +41,6 @@ public struct MDGame: Codable, Hashable, Equatable, Identifiable {
 }
 
 extension MDGame {
-        
     public struct Image: Codable {
         let jpeg: URL?
         let webp: URL?

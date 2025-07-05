@@ -15,15 +15,13 @@ let package = Package(
             targets: ["ServiceLayer"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", from: "5.0.0"),
-        .package(url: "https://github.com/Swinject/Swinject.git", from: "2.8.0")
+        .package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", from: "5.0.0")
     ],
     targets: [
         .target(
             name: "ServiceLayer",
             dependencies: [
-                .product(name: "SwiftyJSON", package: "SwiftyJSON"),
-                "Swinject"
+                .product(name: "SwiftyJSON", package: "SwiftyJSON")
             ],
             resources: [
                 .process("DB.xcdatamodeld")

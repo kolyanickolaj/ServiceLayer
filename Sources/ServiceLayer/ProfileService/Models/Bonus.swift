@@ -1,5 +1,5 @@
 //
-//  BonusList.swift
+//  Bonus.swift
 //  ServiceLayer
 //
 //  Created by Nikolai Lipski on 24.06.25.
