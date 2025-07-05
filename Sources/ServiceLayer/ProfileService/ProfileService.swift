@@ -19,7 +19,7 @@ public protocol IProfileService: AnyObject {
     func cachedProfile() -> (isValid: Bool, profile: Profile?)
     func subscribe() -> ObservingPublisher<Profile?>
     func getBonuses() -> AnyPublisher<[Bonus], Error>
-    func getPromotions() -> AnyPublisher<[Promotion], Error>
+    func getPromotions(for language: String) -> AnyPublisher<[Promotion], Error>
     func getPreferences() -> AnyPublisher<NotificationPreferences, Error>
     func savePreferences(_ prefs: NotificationPreferences) -> AnyPublisher<SavePreferencesResponse, Error>
 }
@@ -87,8 +87,8 @@ public final class ProfileService: IProfileService {
         return requester.fetchList(request: request)
     }
     
-    public func getPromotions() -> AnyPublisher<[Promotion], Error> {
-        let request = PromotionsRequest()
+    public func getPromotions(for language: String) -> AnyPublisher<[Promotion], Error> {
+        let request = PromotionsRequest(queries: PromotionsRequest.Query(language: language))
         return requester.fetchList(request: request)
     }
     

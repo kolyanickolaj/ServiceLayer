@@ -11,6 +11,18 @@ final class PromotionsRequest: BaseRequest, ModelRequest {
 
     typealias Model = Promotion
     
+    struct Query: Codable {
+        let language: String
+    }
+    
+    private let queries: Query
+    
+    public var queryItems: [URLQueryItem]? {
+        var queries: [URLQueryItem] = []
+        queries.append(.init(name: "lang", value: self.queries.language))
+        return queries
+    }
+    
     var zone: RequestZone {
         .private
     }
@@ -33,5 +45,9 @@ final class PromotionsRequest: BaseRequest, ModelRequest {
 
     var payloadKey: String? {
         "data"
+    }
+    
+    init(queries: Query) {
+        self.queries = queries
     }
 }
