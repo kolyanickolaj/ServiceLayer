@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Promotion: Codable, JSONParsable {
-    public var id: String
+    public var id: Int
     public var title: String
     public var description: String?
     public var imageData: ImageData
