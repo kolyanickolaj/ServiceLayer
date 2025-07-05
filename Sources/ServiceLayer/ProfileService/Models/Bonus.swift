@@ -9,7 +9,7 @@ public struct Bonus: Codable, JSONParsable {
     public let name: String
     public let id: Int
     public let currency: String
-    public let amount: Int
+    public let amount: Double
     public let baseCurrency: String
     public let amountInBaseCurrency: Int
     
