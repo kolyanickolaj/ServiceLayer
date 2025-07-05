@@ -19,6 +19,7 @@ public protocol IProfileService: AnyObject {
     func cachedProfile() -> (isValid: Bool, profile: Profile?)
     func subscribe() -> ObservingPublisher<Profile?>
     func getBonuses() -> AnyPublisher<[Bonus], Error>
+    func getPromotions() -> AnyPublisher<[Promotion], Error>
     func getPreferences() -> AnyPublisher<NotificationPreferences, Error>
     func savePreferences(_ prefs: NotificationPreferences) -> AnyPublisher<SavePreferencesResponse, Error>
 }
