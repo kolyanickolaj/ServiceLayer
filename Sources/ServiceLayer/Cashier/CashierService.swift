@@ -16,7 +16,7 @@ public final class CashierService: CashierServiceProtocol {
     private let requester: Requester
 
     public init(
-        requester: Requester,
+        requester: Requester
     ) {
         self.requester = requester
     }
