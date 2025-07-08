@@ -9,7 +9,7 @@ public struct DepositBonus: Codable, JSONParsable {
     public let title: String
     public let id: Int
     public let currency: String
-    public let amount: Int
+    public let amount: Int?
     public let imageUrl: String
     public let bonusCode: String
     public let percent: Int
