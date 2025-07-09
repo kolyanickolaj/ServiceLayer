@@ -8,7 +8,12 @@
 import Foundation
 
 final class GetPaymentMethodsRequest: BaseRequest, ModelRequest {
-
+    let operation: PaymentOperation
+    
+    init(operation: PaymentOperation) {
+        self.operation = operation
+    }
+    
     typealias Model = PaymentSessionInfo
     
     var zone: RequestZone {
@@ -24,8 +29,7 @@ final class GetPaymentMethodsRequest: BaseRequest, ModelRequest {
     }
 
     var path: String {
-        "user/pay-session-withdrawal"
-//        "user/pay-session-deposit"
+        "user/pay-session-\(operation.rawValue)"
     }
     
     var apiVersion: ApiVersion {
