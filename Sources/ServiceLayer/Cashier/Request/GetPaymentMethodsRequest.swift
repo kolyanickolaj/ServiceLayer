@@ -24,7 +24,8 @@ final class GetPaymentMethodsRequest: BaseRequest, ModelRequest {
     }
 
     var path: String {
-        "user/pay-session-deposit"
+        "user/pay-session-withdrawal"
+//        "user/pay-session-deposit"
     }
     
     var apiVersion: ApiVersion {
