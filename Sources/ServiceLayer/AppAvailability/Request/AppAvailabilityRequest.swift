@@ -24,7 +24,8 @@ public final class AppAvailabilityRequest: BaseRequest {
     }
 
     public var path: String {
-        "data/app-availability"
+        "/api/v2/data/app-availability"
+//        "data/app-availability"
     }
     
     public var apiVersion: ApiVersion {
