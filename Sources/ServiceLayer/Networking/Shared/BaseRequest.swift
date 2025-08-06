@@ -47,7 +47,8 @@ extension BaseRequest {
     var defaultHeaders: HTTP.Headers {
         [
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "User-Agent": ServiceLayer.constants.userAgent
         ]
     }
     
