@@ -22,7 +22,7 @@ public protocol IProfileService: AnyObject {
     func getPromotions(for language: String) -> AnyPublisher<[Promotion], Error>
     func getPreferences() -> AnyPublisher<NotificationPreferences, Error>
     func savePreferences(_ prefs: NotificationPreferences) -> AnyPublisher<SavePreferencesResponse, Error>
-    func checkVerificationState() -> AnyPublisher<[Document], Error>
+    func checkVerificationState(for userId: Int) -> AnyPublisher<[Document], Error>
 }
 
 public final class ProfileService: IProfileService {
