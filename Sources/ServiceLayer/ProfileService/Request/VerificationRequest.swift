@@ -33,7 +33,7 @@ final class VerificationRequest: BaseRequest, ModelRequest {
     }
 
     var path: String {
-        " user/documents/list/v2"
+        "user/documents/list/v2"
 //        user/documents/list/v2?user_id=24096&_trlang=en
     }
     
