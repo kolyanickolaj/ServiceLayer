@@ -22,6 +22,7 @@ public protocol IProfileService: AnyObject {
     func getPromotions(for language: String) -> AnyPublisher<[Promotion], Error>
     func getPreferences() -> AnyPublisher<NotificationPreferences, Error>
     func savePreferences(_ prefs: NotificationPreferences) -> AnyPublisher<SavePreferencesResponse, Error>
+    func checkVerificationState() -> AnyPublisher<[Document], Error>
 }
 
 public final class ProfileService: IProfileService {
@@ -105,5 +106,10 @@ public final class ProfileService: IProfileService {
             )
         )
         return requester.fetch(request: request)
+    }
+    
+    public func checkVerificationState(for userId: Int) -> AnyPublisher<[Document], Error> {
+        let request = VerificationRequest(params: .init(userId: userId))
+        return requester.fetchList(request: request)
     }
 }
