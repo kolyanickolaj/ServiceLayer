@@ -23,6 +23,7 @@ public protocol IProfileService: AnyObject {
     func getPreferences() -> AnyPublisher<NotificationPreferences, Error>
     func savePreferences(_ prefs: NotificationPreferences) -> AnyPublisher<SavePreferencesResponse, Error>
     func checkVerificationState(for userId: Int) -> AnyPublisher<[Document], Error>
+    func uploadForVerification(imageName: String, data: Data) -> AnyPublisher<Document, Error>
 }
 
 public final class ProfileService: IProfileService {
@@ -111,5 +112,10 @@ public final class ProfileService: IProfileService {
     public func checkVerificationState(for userId: Int) -> AnyPublisher<[Document], Error> {
         let request = VerificationRequest(params: .init(userId: userId))
         return requester.fetchList(request: request)
+    }
+    
+    public func uploadForVerification(imageName: String, data: Data) -> AnyPublisher<Document, Error> {
+        let request = DocumentUploadRequest(queries: .init(imageName: imageName, imageData: data))
+        return requester.fetch(request: request)
     }
 }
