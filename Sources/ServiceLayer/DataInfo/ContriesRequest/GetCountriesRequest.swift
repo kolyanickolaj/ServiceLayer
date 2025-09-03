@@ -16,7 +16,7 @@ final class GetCountriesRequest: BaseRequest, ModelRequest {
     }
     
     var path: String {
-        "data/get-countries"
+        "data/get-countries-list"
     }
 
     var payloadKey: String? {
