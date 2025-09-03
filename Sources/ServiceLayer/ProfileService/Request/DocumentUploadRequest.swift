@@ -35,7 +35,6 @@ final class DocumentUploadRequest: BaseRequest, ModelRequest {
 
     var path: String {
         "user/documents/upload/v2"
-//        api/user/documents/upload/v2?_trlang=en
     }
     
     var apiVersion: ApiVersion {
@@ -53,14 +52,5 @@ final class DocumentUploadRequest: BaseRequest, ModelRequest {
     func makeBody() throws -> Data? {
         let upload = FileUpload(file: .init(name: queries.imageName, data: queries.imageData.base64EncodedString()))
         return try JSONEncoder().encode(upload)
-//            let jsonData = try JSONEncoder().encode(upload)
-////        let encoder = JSONEncoder()
-////        return try encoder.encode(queries)
-//        var components = URLComponents()
-//        components.queryItems = [
-//            .init(name: "email_marketing_allowed", value: "\(queries.isEmailAllowed)"),
-//            .init(name: "notificationsEnabled", value: "\(queries.notificationsEnabled)")
-//        ]
-//        return components.percentEncodedQuery?.data(using: .utf8)
     }
 }
